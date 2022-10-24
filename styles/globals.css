@@ -1,3 +1,245 @@
+@import url('https://use.typekit.net/zsn3rma.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /*
+  :root CSS custom properties used with tailwind.config.js to establish repeatable utility classes
+  that can be reset with a class based override for themes (dark mode, white labeling) or low-level
+  overrides (purple close-out screens). Used like a "design palette" with Tailwind.
+
+  Color values are written in RGB to be used optionally with Tailwind opacity utilities.
+  Example: class="bg-neutral-contrast bg-opacity-80"
+
+  Tailwind utility class naming convention follows a base modifier + CSS custom property pattern.
+  Example: class="bg-neutral text-neutral-contrast"
+  */
+
+  :root {
+    /* reset Chrome blue overlay on focus - we custom define focus states */
+    -webkit-tap-highlight-color: transparent;
+
+    /* Colors */
+    /* Uses HSL strategy to define lobxs brand color w/ Tailwind color utility class */
+    --lobxs-hue-saturation: 358, 97%;
+    --lobxs-lightness: 42%;
+    --lobxs-light: 60%; /* Light lobxs brand color */
+    --lobxs-lighter: 80%; /* Lighter lobxs Brand color */
+    --lobxs-dark: 32%; /*  Sets HSL lightness for dark lobxs brand color */
+    --lobxs-darker: 25%; /*  Sets HSL lightness for darker lobxs brand color */
+    --lobxs-contrast: 255, 255, 255; /* Contrast color for text on lobxs brand color (set up for future white labeling) */
+    --neutral: 255, 255, 255; /* Used as base neutral background color */
+    /* REF: gray-100 */
+    --neutral-100: 245, 245, 245; /* One step away from base neutral background color */
+    /* REF: gray-200 */
+    --neutral-200: 229, 229, 229; /* Two steps away from base neutral background color */
+    /* REF: gray-300 */
+    --neutral-300: 212, 212, 212; /* Three step away from base neutral background color */
+    /* REF: gray-750 / #303030 */
+    --neutral-contrast: 48, 48, 48; /* Default contrasting color for text, icons, etc. */
+    /* REF: gray-500 */
+    --neutral-contrast-light: 115, 115, 115; /* Default contrasting color for text, icons, etc. */
+    /* REF: gray-600 */
+    --neutral-contrast-alt: 82, 82, 82; /* Alternate contrasting color for text, icons, etc. on darker backgrounds*/
+    --neutral-contrast-disabled: 163, 163, 163; /* For disabled buttons and inputs */
+    --neutral-contrast-accessible: 117, 117, 117; /* Minimum color contrast accessible contrast color */
+    --alert: 231, 35, 24; /* Used for validation, alerts, errors, irrevocable actions */
+    --alert-contrast: 255, 255, 255; /* Text and icon contrast color for --alert */
+    --warn: 255, 187, 0; /* Used for indicating warnings */
+    --warn-contrast: 0, 0, 0; /* Text and icon contrast color for --warn */
+    --success: 5, 127, 62; /* Used for indicating success */
+    --success-contrast: 255, 255, 255; /* Text and icon contrast color for --success */
+    --link: var(--lobxs); /* Inline text link color */
+
+    /* Fonts */
+    --sans: 'oswald', sans-serif;
+    /* --serif: Georgia, serif; */
+
+    /* Border Radius */
+    --lobxs-sm: 4px;
+    --lobxs-md: 4px;
+    --lobxs-lg: 12px;
+    --lobxs-fixed: 9999px; /* Only used for lobxs sticky button */
+
+    /* Spacing */
+    --app: 1.25rem; /* Used for x padding */
+    --button-fixed: 0px; /* Default padding on all patron containers, overridden by fixed lobxs button */
+  }
+
+  /* CSS Variable overrides for dark mode */
+  .dark {
+    /* Uses HSL strategy to define lobxs brand color w/ Tailwind color utility class */
+    --lobxs-hue-saturation: 358.26, 95%, 50%;
+    --lobxs-lightness: 42%;
+    --lobxs-light: 60%; /* Light lobxs brand color */
+    --lobxs-lighter: 80%; /* Lighter lobxs Brand color */
+    --lobxs-dark: 32%; /*  Sets HSL lightness for dark lobxs brand color */
+    --lobxs-darker: 25%; /*  Sets HSL lightness for darker lobxs brand color */
+    --lobxs-contrast: 255, 255, 255; /* Contrast color for text on lobxs brand color (set up for future white labeling) */
+    --neutral: 64, 64, 64; /* Used as base neutral background color */
+    --neutral-100: 48, 48, 48; /* One step away from base neutral background color */
+    --neutral-200: 48, 48, 48; /* Two steps away from base neutral background color */
+    --neutral-300: 0, 0, 0; /* Three step away from base neutral background color */
+    --neutral-contrast: 229, 229, 229; /* Default contrasting color for text, icons, etc. */
+    --neutral-contrast-light: 163, 163, 163; /* Default contrasting color for text, icons, etc. */
+    --neutral-contrast-alt: 82, 82, 82; /* Alternate contrasting color for text, icons, etc., usually used with darker backgrounds*/
+    --neutral-contrast-disabled: 115, 115, 115; /* For disabled buttons and inputs */
+    --neutral-contrast-accessible: 171, 171, 171; /* Minimum color contrast accessible contrast color */
+    --alert: 231, 35, 24; /* Used for validation, alerts, errors, irrevocable actions */
+    --alert-contrast: 255, 255, 255; /* Text and icon contrast color for --alert */
+    --warn: 255, 187, 0; /* Used for indicating warnings */
+    --warn-contrast: 0, 0, 0; /* Text and icon contrast color for --warn */
+    --success: 5, 127, 62; /* Used for indicating success */
+    --success-contrast: 255, 255, 255; /* Text and icon contrast color for --success */
+    --link: var(--lobxs-light); /* Inline text link color */
+  }
+
+  /* Set highlighted text to brand color */
+  ::selection {
+    @apply bg-lobxs text-lobxs-contrast;
+  }
+  ::-moz-selection {
+    @apply bg-lobxs text-lobxs-contrast;
+  }
+
+  /* fix Chrome forcing focus styles (we redefine these elsewhere) */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* set default text color */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span {
+    @apply text-neutral-contrast;
+  }
+
+  [type='checkbox'],
+  [type='radio'] {
+    @apply relative inline-block w-5 h-5 border-2 appearance-none bg-neutral border-neutral-contrast-light;
+  }
+  [type='checkbox'] {
+    @apply rounded;
+  }
+  [type='radio'] {
+    @apply rounded-full;
+  }
+  [type='checkbox']:focus-visible,
+  [type='radio']:focus-visible {
+    @apply outline-none ring-2 ring-lobxs ring-offset-2 border-neutral-contrast-light;
+  }
+  [type='checkbox']:hover,
+  [type='radio']:hover {
+    @apply border-lobxs;
+  }
+  [type='checkbox']:checked {
+    @apply bg-lobxs border-lobxs;
+  }
+  [type='radio']:checked {
+    @apply border-lobxs;
+  }
+  [type='radio']:checked:after {
+    @apply absolute w-3 h-3 -translate-x-1/2 -translate-y-1/2 rounded-full left-1/2 top-1/2 bg-lobxs;
+    content: '';
+  }
+  [type='checkbox']:checked:after {
+    @apply absolute z-20 w-4 h-4 text-white -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2;
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd' /%3E%3C/svg%3E");
+  }
+
+  [type='checkbox']:checked:hover,
+  [type='checkbox']:checked:focus,
+  [type='radio']:checked:hover,
+  [type='radio']:checked:focus {
+    @apply border-lobxs;
+  }
+}
+
+@layer utilities {
+  /* Custom utility classes for customizing lobxs lightness, will be purged if unused */
+  .lobxs-lightness-default {
+    --lobxs-lightness: 42%;
+  }
+  .lobxs-lightness-5 {
+    --lobxs-lightness: 5%;
+  }
+  .lobxs-lightness-10 {
+    --lobxs-lightness: 10%;
+  }
+  .lobxs-lightness-15 {
+    --lobxs-lightness: 15%;
+  }
+  .lobxs-lightness-20 {
+    --lobxs-lightness: 20%;
+  }
+  .lobxs-lightness-25 {
+    --lobxs-lightness: 25%;
+  }
+  .lobxs-lightness-30 {
+    --lobxs-lightness: 30%;
+  }
+  .lobxs-lightness-35 {
+    --lobxs-lightness: 35%;
+  }
+  .lobxs-lightness-40 {
+    --lobxs-lightness: 40%;
+  }
+  .lobxs-lightness-45 {
+    --lobxs-lightness: 45%;
+  }
+  .lobxs-lightness-50 {
+    --lobxs-lightness: 50%;
+  }
+  .lobxs-lightness-55 {
+    --lobxs-lightness: 55%;
+  }
+  .lobxs-lightness-60 {
+    --lobxs-lightness: 60%;
+  }
+  .lobxs-lightness-65 {
+    --lobxs-lightness: 65%;
+  }
+  .lobxs-lightness-70 {
+    --lobxs-lightness: 70%;
+  }
+  .lobxs-lightness-75 {
+    --lobxs-lightness: 75%;
+  }
+  .lobxs-lightness-80 {
+    --lobxs-lightness: 80%;
+  }
+  .lobxs-lightness-85 {
+    --lobxs-lightness: 85%;
+  }
+  .lobxs-lightness-90 {
+    --lobxs-lightness: 90%;
+  }
+  .lobxs-lightness-95 {
+    --lobxs-lightness: 95%;
+  }
+  .text-shadow-white {
+    text-shadow: 2px 2px 2px rgb(255 255 255 / 80%);
+  }
+  .text-shadow {
+    text-shadow: 2px 2px 2px rgb(0 0 0 / 80%);
+  }
+  .text-shadow-lg {
+    text-shadow: 15px 15px 30px black;
+  }
+  .text-shadow-none {
+    text-shadow: none;
+  }
+}
+
+.modal-open {
+  height: 100vh;
+  overflow-y: hidden;
+}
