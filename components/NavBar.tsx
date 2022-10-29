@@ -19,9 +19,9 @@ const NavBar = () => {
   }, [isOpen])
 
   return (
-    <nav className="w-full z-50 bg-transparent absolute top-[30px]">
-      <div className="mx-auto px-10 lg:px-20">
-        <div className="flex items-center">
+    <nav className="w-full z-50 bg-transparent absolute">
+      <div className="max-w-screen-lg 2xl:max-w-screen-2xl mx-auto px-10 lg:px-0 w-full">
+        <div className="flex justify-between w-full items-center">
           <div className="flex flex-grow space-x-4">
             <Image
               className="lg:h-28 w-auto h-[100px]"
@@ -76,7 +76,7 @@ const NavBar = () => {
                 </a>
               </li>
             </ul>
-            <div className="flex items-center">
+            <div className="lg:flex items-center hidden">
               <Button variant="secondary">Tienda</Button>
             </div>
             {/* hamburger menu (smaller devices only) */}
@@ -101,7 +101,7 @@ const NavBar = () => {
                   </p>
                 </a>
                 <div
-                  className={`absolute -top-8 right-0 z-40 h-screen w-full bg-black transition
+                  className={`fixed top-0 left-0 z-40 h-full w-full bg-black transition
                 ${isOpen ? 'visible opacity-40' : 'invisible opacity-0'}`}
                 ></div>
                 <div

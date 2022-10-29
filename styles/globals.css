@@ -30,7 +30,7 @@
     --lobxs-dark: 32%; /*  Sets HSL lightness for dark lobxs brand color */
     --lobxs-darker: 25%; /*  Sets HSL lightness for darker lobxs brand color */
     --lobxs-contrast: 255, 255, 255; /* Contrast color for text on lobxs brand color (set up for future white labeling) */
-    --neutral: 255, 255, 255; /* Used as base neutral background color */
+    --neutral: 237, 237, 237; /* Used as base neutral background color */
     /* REF: gray-100 */
     --neutral-100: 245, 245, 245; /* One step away from base neutral background color */
     /* REF: gray-200 */
@@ -78,7 +78,7 @@
     --lobxs-dark: 32%; /*  Sets HSL lightness for dark lobxs brand color */
     --lobxs-darker: 25%; /*  Sets HSL lightness for darker lobxs brand color */
     --lobxs-contrast: 255, 255, 255; /* Contrast color for text on lobxs brand color (set up for future white labeling) */
-    --neutral: 64, 64, 64; /* Used as base neutral background color */
+    --neutral: 237, 237, 237; /* Used as base neutral background color */
     --neutral-100: 48, 48, 48; /* One step away from base neutral background color */
     --neutral-200: 48, 48, 48; /* Two steps away from base neutral background color */
     --neutral-300: 0, 0, 0; /* Three step away from base neutral background color */

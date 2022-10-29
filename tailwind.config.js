@@ -73,7 +73,9 @@ module.exports = {
         wolfPack: "url('../assets/img/wolf-pack.jpg')",
         heroSmudge: "url('../assets/img/lobxs-hero-bottom.png')",
         bottomSmudge: "url('../assets/img/bottom-smudge.png')",
-        trees: "url('../assets/img/bg-trees.png')"
+        trees: "url('../assets/img/bg-trees.png')",
+        mountains: "url('../assets/img/mountains.png')",
+        whiteSmudge: "url('../assets/img/white-smudge.png')"
       },
       zIndex: {
         '-1': '-1'
