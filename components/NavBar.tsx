@@ -77,7 +77,12 @@ const NavBar = () => {
               </li>
             </ul>
             <div className="lg:flex items-center hidden">
-              <Button variant="secondary">Tienda</Button>
+              <Button
+                variant="secondary"
+                customClasses="!text-white !border-white"
+              >
+                Tienda
+              </Button>
             </div>
             {/* hamburger menu (smaller devices only) */}
             <ul className="flex lg:hidden z-50" onClick={toggleMenu}>

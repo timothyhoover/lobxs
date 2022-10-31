@@ -26,7 +26,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      white: '#ffffff',
+      white: '#ededed',
       black: '#000000',
       lobxs: HSL('--lobxs-hue-saturation', 'var(--lobxs-lightness)'),
       'lobxs-light': HSL('--lobxs-hue-saturation', 'var(--lobxs-light)'),
@@ -70,12 +70,14 @@ module.exports = {
       backgroundImage: {
         forest: "url('../assets/img/tree-smudge.png')",
         valley: "url('../assets/img/valley.png')",
-        wolfPack: "url('../assets/img/wolf-pack.jpg')",
+        wolfPack: "url('../assets/img/wolf-pack.png')",
         heroSmudge: "url('../assets/img/lobxs-hero-bottom.png')",
         bottomSmudge: "url('../assets/img/bottom-smudge.png')",
         trees: "url('../assets/img/bg-trees.png')",
         mountains: "url('../assets/img/mountains.png')",
-        whiteSmudge: "url('../assets/img/white-smudge.png')"
+        whiteSmudge: "url('../assets/img/white-smudge.png')",
+        topWhiteSmudge: "url('../assets/img/top-white-smudge.png')",
+        lobxsFooter: "url('../assets/img/lobxs-footer.png')"
       },
       zIndex: {
         '-1': '-1'
@@ -83,5 +85,20 @@ module.exports = {
     }
   },
 
-  plugins: [require('@tailwindcss/line-clamp')]
+  plugins: [require('@tailwindcss/line-clamp'), require('daisyui')],
+  daisyui: {
+    styled: true,
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: 'd-',
+    themes: [
+      {
+        mytheme: {
+          neutral: '#ededed' // have to do this because dasiy seems to be broken.
+        }
+      }
+    ]
+  }
 }

@@ -7,13 +7,14 @@
   },
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.0",
-    "fp-ts": "^2.13.1",
+    "daisyui": "^2.36.1",
     "iconoir-react": "^5.2.0",
     "next": "latest",
     "next-sanity": "^1.0.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-player": "^2.11.0"
+    "react-player": "^2.11.0",
+    "remeda": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "17.0.35",

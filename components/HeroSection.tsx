@@ -48,7 +48,7 @@ const HeroSection = () => {
         </div>
         <div className={styles.vimeoWrapper}>
           <iframe
-            src="https://player.vimeo.com/video/722561004?autoplay=1&loop=1"
+            src="https://player.vimeo.com/video/722561004?muted=1&autoplay=1&loop=1&transparent=0&background=1"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen

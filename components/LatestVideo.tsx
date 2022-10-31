@@ -21,7 +21,7 @@ const LatestVideo = () => {
           variant="secondary"
           size="lg"
         >
-          View Video
+          Ver Video
         </Button>
       </div>
     </div>
