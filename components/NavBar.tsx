@@ -40,7 +40,7 @@ const NavBar = () => {
             >
               <li className="hidden lg:flex">
                 <a
-                  className="text-white hover:text-gray-400 text font-semibold py-1 px-3"
+                  className="text-white hover:underline decoration-2 decoration-lobxs hover:text-gray-400 text font-semibold py-1 px-3"
                   href="/"
                 >
                   Inicio
@@ -48,7 +48,7 @@ const NavBar = () => {
               </li>
               <li className="hidden lg:flex">
                 <a
-                  className="text-white hover:text-gray-400 text font-semibold py-1 px-3"
+                  className="text-white hover:underline decoration-2 decoration-lobxs hover:text-gray-400 text font-semibold py-1 px-3"
                   href="/#"
                 >
                   Las Lobas
@@ -56,7 +56,7 @@ const NavBar = () => {
               </li>
               <li className="hidden lg:flex">
                 <a
-                  className="text-white hover:text-gray-400 text font-semibold py-1 px-3"
+                  className="text-white hover:underline decoration-2 decoration-lobxs hover:text-gray-400 text font-semibold py-1 px-3"
                   href="/#"
                 >
                   Entrenamientos
@@ -64,7 +64,7 @@ const NavBar = () => {
               </li>
               <li className="hidden lg:flex">
                 <a
-                  className="text-white hover:text-gray-400 text font-semibold py-1 px-3"
+                  className="text-white hover:underline decoration-2 decoration-lobxs hover:text-gray-400 text font-semibold py-1 px-3"
                   href="/#"
                 >
                   Academia de Trail
@@ -72,7 +72,7 @@ const NavBar = () => {
               </li>
               <li className="hidden lg:flex">
                 <a
-                  className="text-white hover:text-gray-400 text font-semibold py-1 px-3"
+                  className="text-white hover:underline decoration-2 decoration-lobxs hover:text-gray-400 text font-semibold py-1 px-3"
                   href="/#"
                 >
                   Contacto
