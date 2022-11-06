@@ -1,10 +1,18 @@
 import Image, { ImageProps } from 'next/image'
-import React from 'react'
+import React, { CSSProperties } from 'react'
 
-const Avatar = ({ width = '100%', height = '100%', ...rest }: ImageProps) => {
+const style = {
+  position: 'absolute',
+  height: '100%',
+  width: '100%',
+  inset: '0px',
+  objectFit: 'cover'
+} as CSSProperties
+
+const Avatar = ({ ...rest }: ImageProps) => {
   return (
-    <div className="rounded-full overflow-hidden w-24 h-24 bg-alert">
-      <Image objectFit="cover" width={width} height={height} {...rest} />
+    <div className="relative rounded-full overflow-hidden w-24 h-24">
+      <Image style={style} {...rest} />
     </div>
   )
 }

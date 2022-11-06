@@ -1,3 +1,5 @@
+'use client'
+
 import { ShoppingBag } from 'iconoir-react'
 import React from 'react'
 import { Button } from './Button'

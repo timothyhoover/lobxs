@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
-import WolfHero from '../assets/img/wolf-hero.png'
-import HowlHero from '../assets/img/howl-hero.png'
+import WolfHero from '../public/img/wolf-hero.png'
+import HowlHero from '../public/img/howl-hero.png'
 import LatestVideo from './LatestVideo'
 
 const WelcomeSection = () => {
@@ -10,7 +10,7 @@ const WelcomeSection = () => {
       <div className="bg-[#252525] lg:bg-transparent flex justify-center items-center relative w-full -mt-32 lg:-mt-28 px-10 after:content[''] after:bg-bottomSmudge after:bg-cover after:bg-center after:absolute after:left-0 after:w-full after:h-[475px] after:bg-no-repeat after:bottom-[-230px] after:z-10">
         <div className="flex flex-col lg:flex-row justify-evenly relative lg:justify-between items-center max-w-screen-lg 2xl:max-w-screen-2xl w-full">
           <div className="z-30 flex flex-col items-center">
-            <Image src={WolfHero} />
+            <Image src={WolfHero} alt="wolf" />
             <p className="hidden lg:block text-white text-2xl lg:text-3xl mt-5">
               Entrenamientos / Academia
             </p>
@@ -30,7 +30,7 @@ const WelcomeSection = () => {
             </p>
           </div>
           <div className="z-30 flex flex-col items-center">
-            <Image src={HowlHero} />
+            <Image src={HowlHero} alt="howl" />
             <p className="text-white text-2xl lg:text-3xl mt-5">
               Expediciones / Desafíos
             </p>

@@ -12,7 +12,7 @@ const FeaturedVideoSection = () => {
           <p className="text-black text-shadow-white font-medium text-2xl lg:text-4xl">
             Nuestro Objetivo
           </p>
-          <p className="text-6xl lg:text-8xl font-bold text-white text-shado -mb-4 lg:-mb-6">
+          <p className="text-6xl lg:text-8xl font-bold text-white text-shadow -mb-4 lg:-mb-6">
             VISIBILIZAR
           </p>
           <p className="text-6xl lg:text-8xl font-bold text-lobxs text-shadow ml-10 -mb-4 lg:-mb-6">

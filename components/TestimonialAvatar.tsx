@@ -3,15 +3,15 @@ import Avatar from './Avatar'
 
 type props = ImageProps & {
   name: string
-  position?: string
+  job?: string
 }
 
-const TestimonialAvatar = ({ name, position, ...imgProps }: props) => {
+const TestimonialAvatar = ({ name, job, ...imgProps }: props) => {
   return (
     <div className="flex flex-col items-center">
       <Avatar {...imgProps} />
       <p className="text-white">{name}</p>
-      <p className="text-white">{position}</p>
+      <p className="text-white">{job}</p>
     </div>
   )
 }

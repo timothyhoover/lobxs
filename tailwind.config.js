@@ -17,10 +17,7 @@ function HSL(variableName, lightness) {
 }
 
 module.exports = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}'
-  ],
+  content: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   important: true,
   theme: {
     colors: {
@@ -68,16 +65,16 @@ module.exports = {
         header: '4.5rem'
       },
       backgroundImage: {
-        forest: "url('../assets/img/tree-smudge.png')",
-        valley: "url('../assets/img/valley.png')",
-        wolfPack: "url('../assets/img/wolf-pack.png')",
-        heroSmudge: "url('../assets/img/lobxs-hero-bottom.png')",
-        bottomSmudge: "url('../assets/img/bottom-smudge.png')",
-        trees: "url('../assets/img/bg-trees.png')",
-        mountains: "url('../assets/img/mountains.png')",
-        whiteSmudge: "url('../assets/img/white-smudge.png')",
-        topWhiteSmudge: "url('../assets/img/top-white-smudge.png')",
-        lobxsFooter: "url('../assets/img/lobxs-footer.png')"
+        forest: "url('/img/tree-smudge.png')",
+        valley: "url('/img/valley.png')",
+        wolfPack: "url('/img/wolf-pack.png')",
+        heroSmudge: "url('/img/lobxs-hero-bottom.png')",
+        bottomSmudge: "url('/img/bottom-smudge.png')",
+        trees: "url('/img/bg-trees.png')",
+        mountains: "url('/img/mountains.png')",
+        whiteSmudge: "url('/img/white-smudge.png')",
+        topWhiteSmudge: "url('/img/top-white-smudge.png')",
+        lobxsFooter: "url('/img/lobxs-footer.png')"
       },
       zIndex: {
         '-1': '-1'
@@ -85,7 +82,7 @@ module.exports = {
     }
   },
 
-  plugins: [require('@tailwindcss/line-clamp'), require('daisyui')],
+  plugins: [require('daisyui')],
   daisyui: {
     styled: true,
     base: true,

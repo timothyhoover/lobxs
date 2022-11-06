@@ -1,7 +1,6 @@
+'use client'
+
 import React from 'react'
-import Image from 'next/image'
-import LobxsHero from '../assets/img/lobxs-hero.png'
-import LobxsHeroBottom from '../assets/img/lobxs-hero-bottom.png'
 import { Button } from './Button'
 import { Instagram, YouTube } from 'iconoir-react'
 import styles from '../styles/hero-section.module.css'

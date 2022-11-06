@@ -1,7 +1,9 @@
+'use client'
+
 import React, { useEffect, useState } from 'react'
 
 import Image from 'next/image'
-import Logo from '../assets/img/lobxs-logo.png'
+import Logo from '../public/img/lobxs-logo.png'
 import { Button } from './Button'
 
 const NavBar = () => {
@@ -28,6 +30,7 @@ const NavBar = () => {
               src={Logo}
               width={200}
               height={150}
+              alt="logo"
             />
           </div>
           <div className="flex items-center space-x-5 z-50">

@@ -1,6 +1,5 @@
 import React from 'react'
-import Avatar from './Avatar'
-import TestimonialExample from '../assets/img/Testimonial-example.jpeg'
+import TestimonialExample from '../public/img/Testimonial-example.jpeg'
 import TestimonialAvatar from './TestimonialAvatar'
 
 const TestimonialSection = () => {
@@ -106,8 +105,9 @@ const TestimonialSection = () => {
           <div className="flex justify-center mt-8">
             <TestimonialAvatar
               name="Victoria Fernandez Oruña"
-              position="Corredor de montaña"
+              job="Corredor de montaña"
               src={TestimonialExample}
+              alt="testimonial avatar"
             />
           </div>
           <div className="flex justify-center w-full py-2 gap-2">
@@ -125,15 +125,15 @@ const TestimonialSection = () => {
             </a>
           </div>
         </div>
-        <div className="flex flex-col items-center lg:items-start w-full order-1 mb-12 lg:mb-0 lg:order-2">
+        <div className="flex flex-col items-center lg:items-center w-full order-1 mb-12 lg:mb-0 lg:order-2">
           <div>
-            <h3 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-white -mb-4 lg:-mb-8">
+            <h3 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-white text-shadow -mb-4 lg:-mb-8">
               ESCUCHA
             </h3>
-            <h3 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-lobxs ml-5 lg:ml-8 whitespace-nowrap">
+            <h3 className="text-5xl lg:text-7xl xl:text-8xl font-bold text-lobxs text-shadow ml-5 lg:ml-8 whitespace-nowrap">
               EL AULLIDO
             </h3>
-            <p className="text-2xl lg:text-4xl xl:text6xl text-white font-bold">
+            <p className="text-2xl lg:text-4xl xl:text6xl text-white text-shadow font-bold">
               ¿Qué Dicen Nuestrxs Atletas?
             </p>
           </div>
