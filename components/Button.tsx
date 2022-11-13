@@ -1,52 +1,60 @@
-import React, { ReactNode, useEffect } from 'react'
+import classNames from 'classnames'
+import React, { ReactNode } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type ButtonProps = {
   children?: ReactNode
-  onClick?: () => void
-  variant?: string // default, primary, info, success, warning, danger, dark
-  size?: string // sm, md, lg
+  variant?: string
+  size?: string
   disabled?: boolean
-  customClasses?: string
+  className?: string
 }
 
-export const Button = ({
+const Button = ({
   children,
-  onClick,
   variant = 'primary',
   size = 'md',
-  disabled,
-  customClasses,
+  className,
   ...rest
 }: ButtonProps) => {
-  const setVariant = () =>
-    variant === 'primary'
-      ? 'px-5 rounded-lobxs-md disabled:bg-neutral-contrast-disabled disabled:bg-neutral-contrast-disabled bg-lobxs text-neutral font-semibold hover:lobxs-lightness-35 active:lobxs-lightness-25 duration-200 ease-in-out focus-visible:ring-2 focus-visible:ring-lobxs'
-      : variant === 'secondary'
-      ? `px-5 rounded-lobxs-md font-semibold disabled:border-neutral-contrast-disabled border-2 ${
-          customClasses?.includes('text-' || 'border-')
-            ? ''
-            : 'text-lobxs border-lobxs'
-        } border-2 bg-transparent disabled:hover:bg-neutral hover:bg-lobxs-lighter hover:bg-opacity-40 active:bg-opacity-60 focus-visible:bg-lobxs-lighter focus-visible:bg-opacity-40`
-      : variant === 'tertiary'
-      ? 'px-5 rounded-md text-neutral-contrast font-medium border-2 border-neutral-300 bg-neutral hover:bg-neutral-200 focus-visible:bg-neutral-200 active:bg-neutral-300'
-      : variant === 'danger'
-      ? 'px-5 rounded-lobxs-md bg-alert disabled:bg-neutral-contrast-disabled text-lobxs-contrast font-semibold hover:lobxs-lightness-35 active:lobxs-lightness-25 duration-200 ease-in-out focus-visible:ring-2 focus-visible:ring-lobxs'
-      : ''
-  const setSize = () =>
-    size === 'sm'
-      ? 'h-10 text-sm'
-      : size === 'md'
-      ? 'h-12 text-base'
-      : 'h-14 text-lg'
+  const baseClasses =
+    'appearance-none flex flex-auto overflow-hidden disabled:cursor-not-allowed ring-offset-2 items-center justify-center cursor-pointer !outline-0 transition-all duration-200 ease-in-out group !pointer-events-auto'
+
+  const variants = [
+    {
+      'px-5 rounded-lobxs-md disabled:bg-neutral-contrast-disabled disabled:bg-neutral-contrast-disabled bg-lobxs text-neutral font-semibold hover:lobxs-lightness-35 active:lobxs-lightness-25 duration-200 ease-in-out focus-visible:ring-2 focus-visible:ring-lobxs':
+        variant === 'primary'
+    },
+    {
+      'px-5 rounded-lobxs-md font-semibold disabled:border-neutral-contrast-disabled text-lobxs border-lobxs border-2 border-2 bg-transparent disabled:hover:bg-neutral hover:bg-lobxs-lighter hover:bg-opacity-40 active:bg-opacity-60 focus-visible:bg-lobxs-lighter focus-visible:bg-opacity-40':
+        variant === 'secondary'
+    },
+    {
+      'px-5 rounded-md text-neutral-contrast font-medium border-2 border-neutral-300 bg-neutral hover:bg-neutral-200 focus-visible:bg-neutral-200 active:bg-neutral-300':
+        variant === 'tertiary'
+    },
+    {
+      'px-5 rounded-lobxs-md bg-alert disabled:bg-neutral-contrast-disabled text-lobxs-contrast font-semibold hover:lobxs-lightness-35 active:lobxs-lightness-25 duration-200 ease-in-out focus-visible:ring-2 focus-visible:ring-lobxs':
+        variant === 'danger'
+    }
+  ]
+
+  const sizes = [
+    { 'h-10 text-sm': size === 'sm' },
+    { 'h-12 text-base': size === 'md' },
+    { 'h-14 text-lg': size === 'lg' }
+  ]
+
+  const buttonClasses = twMerge(
+    classNames(baseClasses, sizes, variants),
+    className
+  )
 
   return (
-    <button
-      className={`font-bold py-2 px-4 rounded ${customClasses} ${setVariant()} ${setSize()}`}
-      onClick={onClick}
-      disabled={disabled}
-      {...rest}
-    >
+    <button className={buttonClasses} {...rest}>
       {children}
     </button>
   )
 }
+
+export default Button

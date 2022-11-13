@@ -1,5 +1,5 @@
-import Image, { ImageProps } from 'next/image'
-import Avatar from './Avatar'
+import { ImageProps } from 'next/image'
+import Avatar from '../components/Avatar'
 
 type props = ImageProps & {
   name: string

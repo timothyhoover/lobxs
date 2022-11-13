@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from './Button'
+import Button from '../components/Button'
 
 const LatestVideo = () => {
   return (
@@ -17,7 +17,7 @@ const LatestVideo = () => {
           Mar 8, 2020
         </p>
         <Button
-          customClasses="border-black text-black w-3/6"
+          className="border-black text-black w-3/6"
           variant="secondary"
           size="lg"
         >

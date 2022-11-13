@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import React, { ReactNode } from 'react'
-import NavBar from '../components/NavBar'
+import NavBar from './NavBar'
+import Footer from './Footer'
 
 type Props = {
   children?: ReactNode
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: Props) {
       <body>
         <NavBar />
         {children}
+        <Footer />
       </body>
     </html>
   )

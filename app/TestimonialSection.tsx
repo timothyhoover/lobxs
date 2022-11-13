@@ -5,7 +5,7 @@ import TestimonialAvatar from './TestimonialAvatar'
 const TestimonialSection = () => {
   return (
     <section className="relative bg-wolfPack bg-cover bg-center overflow-visible z-50">
-      <div className='flex z-50 flex-col lg:flex-row lg:justify-between max-w-screen-lg 2xl:max-w-screen-2xl mx-auto justify-center px-10 lg:px-0 items-center h-[1200px] space-x-10 before:content[""] before:bg-topWhiteSmudge before:bg-cover before:bg-center before:absolute before:left-0 before:top-0 before:w-full before:h-[475px] before:bg-no-repeat before:z-10 after:content[""] after:bg-whiteSmudge after:bg-cover after:bg-center after:absolute after:left-0 after:bottom-0 after:w-full after:h-[475px] after:bg-no-repeat after:z-10'>
+      <div className='flex z-50 flex-col lg:flex-row lg:justify-between max-w-screen-lg 2xl:max-w-screen-2xl mx-auto justify-center px-10 items-center h-[1200px] space-x-10 before:content[""] before:bg-topWhiteSmudge before:bg-cover before:bg-center before:absolute before:left-0 before:top-0 before:w-full before:h-[475px] before:bg-no-repeat before:z-10 after:content[""] after:bg-whiteSmudge after:bg-cover after:bg-center after:absolute after:left-0 after:bottom-0 after:w-full after:h-[475px] after:bg-no-repeat after:z-10'>
         <div className="order-2 lg:order-1 w-full h-2/6">
           <div className="d-carousel h-auto">
             <div

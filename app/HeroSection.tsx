@@ -1,17 +1,17 @@
 'use client'
 
 import React from 'react'
-import { Button } from './Button'
+import Button from '../components/Button'
 import { Instagram, YouTube } from 'iconoir-react'
 import styles from '../styles/hero-section.module.css'
 
 const HeroSection = () => {
   return (
     <>
-      <header className="relative h-[700px] after:content[''] after:bg-heroSmudge after:absolute after:top-0 after:left-0 after:w-full after:h-[800px] after:bottom-[-195px] after:bg-auto after:z-20">
+      <header className="relative h-[700px] after:content[''] after:bg-heroSmudge after:absolute after:top-0 after:left-0 after:w-full after:h-[800px] after:bottom-[-195px] after:bg-auto after:z-10">
         {/* overlay */}
-        <div className="absolute top-0 left-0 flex items-center justify-center h-[700px] w-full bg-black bg-opacity-40 z-20" />
-        <div className="absolute left-0 flex flex-col items-center justify-center h-[700px] w-full px-8 lg:px-16 z-30">
+        <div className="absolute top-0 left-0 flex items-center justify-center h-[700px] w-full bg-black bg-opacity-40 z-10" />
+        <div className="absolute left-0 flex flex-col items-center justify-center h-[700px] w-full px-8 lg:px-16 z-20">
           <div className="flex flex-col justify-center items-center w-full max-w-screen-md space-y-8 text-center lg:-mb-10">
             <h1 className="text-5xl lg:text-7xl text-white font-bold text-shadow">
               Persigue tu instinto
@@ -28,17 +28,17 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 variant="secondary"
-                customClasses="!border-white !text-white !text-2xl !h-16 !px-10"
+                className="border-white text-white text-2xl h-16 px-10"
               >
                 Conócenos
               </Button>
               <Instagram
-                className="text-neutral hover:text-lobxs cursor-pointer"
+                className="text-neutral hover:text-lobxs cursor-pointer transition-all ease-in-out duration-150"
                 width={36}
                 height={36}
               />
               <YouTube
-                className="text-neutral hover:text-lobxs cursor-pointer"
+                className="text-neutral hover:text-lobxs cursor-pointer transition-all ease-in-out duration-150"
                 width={36}
                 height={36}
               />

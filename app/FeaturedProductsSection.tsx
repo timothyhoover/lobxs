@@ -2,8 +2,8 @@
 
 import { ShoppingBag } from 'iconoir-react'
 import React from 'react'
-import { Button } from './Button'
-import Product from './Product'
+import Button from '../components/Button'
+import Product from '../components/Product'
 
 const FeaturedProducts = () => {
   return (

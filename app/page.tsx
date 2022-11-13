@@ -1,12 +1,11 @@
-import FeaturedProducts from '../components/FeaturedProducts'
-import FeaturedVideoSection from '../components/FeaturedVideoSection'
-import Footer from '../components/Footer'
-import HeroSection from '../components/HeroSection'
-import JoinUsSection from '../components/JoinUsSection'
-import TestimonialSection from '../components/TestimonialSection'
-import WelcomeSection from '../components/WelcomeSection'
+import FeaturedProducts from './FeaturedProductsSection'
+import FeaturedVideoSection from './FeaturedVideoSection'
+import HeroSection from './HeroSection'
+import JoinUsSection from './JoinUsSection'
+import TestimonialSection from './TestimonialSection'
+import WelcomeSection from './WelcomeSection'
 
-const Page = () => {
+const HomePage = () => {
   return (
     <>
       <HeroSection />
@@ -15,9 +14,8 @@ const Page = () => {
       <FeaturedProducts />
       <TestimonialSection />
       <JoinUsSection />
-      <Footer />
     </>
   )
 }
 
-export default Page
+export default HomePage

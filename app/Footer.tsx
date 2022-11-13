@@ -4,6 +4,8 @@ import { Instagram, YouTube } from 'iconoir-react'
 import Image from 'next/image'
 import React from 'react'
 import SomosLobxs from '../public/img/somoslobxs.png'
+import Button from '../components/Button'
+import Input from '../components/Input'
 
 const Footer = () => {
   return (
@@ -23,18 +25,22 @@ const Footer = () => {
           </ul>
         </nav>
         {/* download ebook */}
-        <div className="flex flex-col">
-          <p className="font-medium text-xl text-white">
+        <div className="flex flex-col justify-center bg-white p-app rounded-md">
+          <p className="font-medium text-xl">
             E-BOOK GRATUITO: LAS 7 CLAVES PARA CORRER BIEN EN MONTAÑA
           </p>
-          <p className="text-white mt-2">
+          <p>
             ¡Este es nuestro regalo para ti! Déjanos tu correo electrónico y
             recibirás el E-book en tu inbox en breve.
           </p>
-          <p className="text-xl font-medium text-white mt-5">
-            Correo Electrónico
-          </p>
-          {/* Email Input */}
+          <Input
+            label="Correo Electrónico"
+            placeholder="Correo Electrónico"
+            className="focus:ring-black focus:border-black focus-visible:border-black hover:border-black"
+          />
+          <Button variant="secondary" className="border-black text-black">
+            Enviar
+          </Button>
         </div>
       </div>
       <div className="max-w-screen-lg 2xl:max-w-screen-2xl mx-auto mt-8 px-5 lg:px-0">
