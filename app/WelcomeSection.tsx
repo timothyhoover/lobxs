@@ -41,7 +41,7 @@ const WelcomeSection = () => {
         </div>
       </div>
       <div className="flex flex-col items-center mt-24 px-app z-20 max-w-screen-lg 2xl:max-w-screen-2xl w-full mx-auto">
-        <h3 className="text-6xl lg:text-8xl font-bold text-black text-shadow-white z-30">
+        <h3 className="text-6xl lg:text-8xl font-bold text-black text-shadow-white z-20">
           Últimos
         </h3>
         <h3 className="text-6xl lg:text-8xl font-bold text-shadow text-white ml-32 -mt-6 lg:-mt-8 z-20">

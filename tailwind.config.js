@@ -74,7 +74,11 @@ module.exports = {
         mountains: "url('/img/mountains.png')",
         whiteSmudge: "url('/img/white-smudge.png')",
         topWhiteSmudge: "url('/img/top-white-smudge.png')",
-        lobxsFooter: "url('/img/lobxs-footer.png')"
+        lobxsFooter: "url('/img/lobxs-footer.png')",
+        wolfPackHero: "url('/img/wolf-pack-hero.png')",
+        bgBottomSmudge: "url('/img/bg-smudge-bottom.png')",
+        heroBottom: "url('/img/hero-bottom.png')",
+        aboutBanner: "url('/img/about-banner.png')"
       },
       zIndex: {
         '-1': '-1'

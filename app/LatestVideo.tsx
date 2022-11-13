@@ -16,13 +16,15 @@ const LatestVideo = () => {
         <p className="font-medium text-black text-xl lg:text-2xl">
           Mar 8, 2020
         </p>
-        <Button
-          className="border-black text-black w-3/6"
-          variant="secondary"
-          size="lg"
-        >
-          Ver Video
-        </Button>
+        <div>
+          <Button
+            className="border-black text-black w-3/6"
+            variant="secondary"
+            size="lg"
+          >
+            Ver Video
+          </Button>
+        </div>
       </div>
     </div>
   )
