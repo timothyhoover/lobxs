@@ -84,16 +84,16 @@ const NavBar = () => {
                   </a>
                 </li>
               </ul>
-              <div className="lg:flex items-center hidden">
-                <Button variant="secondary" className="text-white border-white">
-                  Tienda
-                </Button>
-              </div>
+              <Button
+                variant="secondary"
+                className="hidden lg:flex text-white border-white"
+              >
+                Tienda
+              </Button>
               <Cart
                 onClick={() => setShowDrawer(!showDrawer)}
-                className="absolute right-16 lg:relative lg:right-auto hover:text-lobxs transition-all ease-in-out duration-150 cursor-pointer mr-3"
+                className="absolute right-16 lg:relative lg:right-auto hover:text-lobxs transition-all ease-in-out duration-150 cursor-pointer"
               />
-              {/* hamburger menu (smaller devices only) */}
             </div>
           </div>
         </div>
