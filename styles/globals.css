@@ -52,6 +52,7 @@
     --success: 5, 127, 62; /* Used for indicating success */
     --success-contrast: 255, 255, 255; /* Text and icon contrast color for --success */
     --link: var(--lobxs); /* Inline text link color */
+    --blue: #16b7de;
 
     /* Fonts */
     --sans: 'oswald', sans-serif;

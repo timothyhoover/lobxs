@@ -46,7 +46,8 @@ module.exports = {
       'warn-contrast': RGB('--warn-contrast'),
       success: RGB('--success'),
       'success-contrast': RGB('--success-contrast'),
-      link: RGB('--link')
+      link: RGB('--link'),
+      blue: '#16b7de'
     },
     fontFamily: {
       sans: 'var(--sans)',
@@ -78,7 +79,8 @@ module.exports = {
         wolfPackHero: "url('/img/wolf-pack-hero.png')",
         bgBottomSmudge: "url('/img/bg-smudge-bottom.png')",
         heroBottom: "url('/img/hero-bottom.png')",
-        aboutBanner: "url('/img/about-banner.png')"
+        aboutBanner: "url('/img/about-banner.png')",
+        nuestroEjemplo: "url('/img/nuestro-ejemplo.png')"
       },
       zIndex: {
         '-1': '-1'
