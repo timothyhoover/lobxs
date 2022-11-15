@@ -4,6 +4,10 @@ import { ShoppingBag } from 'iconoir-react'
 import React from 'react'
 import Button from '../components/Button'
 import Product from '../components/Product'
+import ShirtGirls from '../public/img/shirt-girls.png'
+import ShirtBoys from '../public/img/shirt-boys.png'
+import CoffeeCup from '../public/img/coffee-cup.png'
+import HeadBand from '../public/img/headband.png'
 
 const FeaturedProducts = () => {
   return (
@@ -16,11 +20,11 @@ const FeaturedProducts = () => {
           Equipación
         </h3>
       </div>
-      <div className="flex justify-evenly w-full mt-10 mb-12">
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 place-content-center gap-8 mt-10 mb-12">
+        <Product img={ShirtGirls} />
+        <Product img={ShirtBoys} />
+        <Product img={CoffeeCup} />
+        <Product img={HeadBand} />
       </div>
       <Button size="lg" variant="secondary">
         <div className="flex space-x-2">

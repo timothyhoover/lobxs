@@ -8,13 +8,12 @@ import Button from '../components/Button'
 import { Cart } from 'iconoir-react'
 import Drawer from '../components/Drawer'
 import Overlay from '../components/Overlay'
+import Link from 'next/link'
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [showDrawer, setShowDrawer] = useState(false)
-  const toggleMenu = (): void => {
-    return setIsOpen(!isOpen)
-  }
+  const toggleMenu = (): void => setIsOpen(!isOpen)
 
   useEffect(() => {
     if (isOpen || showDrawer) {
@@ -29,7 +28,7 @@ const NavBar = () => {
       <nav className="w-full z-30 bg-transparent absolute">
         <div className="max-w-screen-lg 2xl:max-w-screen-2xl mx-auto px-10 lg:px-0 w-full">
           <div className="flex justify-between w-full items-center">
-            <div className="flex flex-grow space-x-4">
+            <Link href="/" className="flex flex-grow space-x-4">
               <Image
                 className="lg:h-28 w-auto h-[100px]"
                 src={Logo}
@@ -37,27 +36,24 @@ const NavBar = () => {
                 height={150}
                 alt="logo"
               />
-            </div>
+            </Link>
             <div className="flex items-center space-x-5 z-50">
-              <ul
-                className="flex items-center space-x-5 z-50"
-                onClick={toggleMenu}
-              >
+              <ul className="flex items-center space-x-5 z-50">
                 <li className="hidden lg:flex">
-                  <a
+                  <Link
                     className="text-white hover:underline decoration-2 decoration-lobxs hover:text-gray-400 text font-semibold py-1 px-3"
                     href="/"
                   >
                     Inicio
-                  </a>
+                  </Link>
                 </li>
                 <li className="hidden lg:flex">
-                  <a
+                  <Link
                     className="text-white hover:underline decoration-2 decoration-lobxs hover:text-gray-400 text font-semibold py-1 px-3"
-                    href="/#"
+                    href="/las-lobas"
                   >
                     Las Lobas
-                  </a>
+                  </Link>
                 </li>
                 <li className="hidden lg:flex">
                   <a
@@ -105,34 +101,48 @@ const NavBar = () => {
             isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <li className="flex items-center">
-            <ul className="flex flex-col bg-white w-full rounded shadow-md overflow-hidden">
-              <li className="flex">
-                <a
-                  className="flex flex-1 text-lg text-lobxs-black hover:bg-lobxs-lighter font-semibold px-8 py-4"
-                  href="/"
-                >
-                  Inicio
-                </a>
-              </li>
-              <li className="flex">
-                <a
-                  className="flex flex-1 text-lg text-lobxs-black hover:bg-lobxs-lighter font-semibold px-8 py-4"
-                  href="/#"
-                >
-                  ¿Cómo Funciona?
-                </a>
-              </li>
-              <li className="flex">
-                <a
-                  className="flex flex-1 text-lg text-lobxs-black hover:bg-lobxs-lighter font-semibold px-8 py-4"
-                  href="/#"
-                >
-                  Contacto
-                </a>
-              </li>
-            </ul>
-          </li>
+          <ul className="flex flex-col bg-white w-full rounded shadow-md overflow-hidden">
+            <li>
+              <Link
+                className="flex flex-1 text-lg text-black hover:bg-lobxs-lighter font-semibold px-8 py-4"
+                href="/"
+              >
+                Inicio
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="flex flex-1 text-lg text-black hover:bg-lobxs-lighter font-semibold px-8 py-4"
+                href="/las-lobas"
+              >
+                Las Lobas
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="flex flex-1 text-lg text-black hover:bg-lobxs-lighter font-semibold px-8 py-4"
+                href="/#"
+              >
+                Entrenamientos
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="flex flex-1 text-lg text-black hover:bg-lobxs-lighter font-semibold px-8 py-4"
+                href="/#"
+              >
+                Academia de Trail
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="flex flex-1 text-lg text-black hover:bg-lobxs-lighter font-semibold px-8 py-4"
+                href="/#"
+              >
+                Contacto
+              </Link>
+            </li>
+          </ul>
         </ul>
       </nav>
       <button
@@ -164,7 +174,7 @@ const NavBar = () => {
         onClick={() => setShowDrawer(!showDrawer)}
         show={showDrawer}
       ></Drawer>
-      {isOpen && <Overlay />}
+      {isOpen && <Overlay onClick={toggleMenu} />}
     </>
   )
 }
