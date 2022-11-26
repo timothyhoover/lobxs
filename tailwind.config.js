@@ -80,7 +80,25 @@ module.exports = {
         bgBottomSmudge: "url('/img/bg-smudge-bottom.png')",
         heroBottom: "url('/img/hero-bottom.png')",
         aboutBanner: "url('/img/about-banner.png')",
-        nuestroEjemplo: "url('/img/nuestro-ejemplo.png')"
+        nuestroEjemplo: "url('/img/nuestro-ejemplo.png')",
+        sleepingWolf: "url('/img/sleeping-wolf.png')",
+        academyBanner: "url('/img/academy-banner.png')",
+        academyBackground: "url('/img/academy-background.jpeg')",
+        trailTechniqueBackground: "url('/img/trail-technique-bg.jpeg')"
+      },
+      animation: {
+        marquee: 'marquee 25s linear infinite',
+        marquee2: 'marquee2 25s linear infinite'
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' }
+        },
+        marquee2: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' }
+        }
       },
       zIndex: {
         '-1': '-1'

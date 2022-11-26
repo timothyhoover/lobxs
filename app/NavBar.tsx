@@ -41,7 +41,7 @@ const NavBar = () => {
               <ul className="flex items-center space-x-5 z-50">
                 <li className="hidden lg:flex">
                   <Link
-                    className="text-white hover:underline decoration-2 decoration-lobxs hover:text-gray-400 text font-semibold py-1 px-3"
+                    className="text-white hover:underline decoration-2 decoration-lobxs text font-semibold py-1 px-3"
                     href="/"
                   >
                     Inicio
@@ -49,7 +49,7 @@ const NavBar = () => {
                 </li>
                 <li className="hidden lg:flex">
                   <Link
-                    className="text-white hover:underline decoration-2 decoration-lobxs hover:text-gray-400 text font-semibold py-1 px-3"
+                    className="text-white hover:underline decoration-2 decoration-lobxs text font-semibold py-1 px-3"
                     href="/las-lobas"
                   >
                     Las Lobas
@@ -57,24 +57,24 @@ const NavBar = () => {
                 </li>
                 <li className="hidden lg:flex">
                   <a
-                    className="text-white hover:underline decoration-2 decoration-lobxs hover:text-gray-400 text font-semibold py-1 px-3"
-                    href="/#"
+                    className="text-white hover:underline decoration-2 decoration-lobxs text font-semibold py-1 px-3"
+                    href="/entrenamientos"
                   >
                     Entrenamientos
                   </a>
                 </li>
                 <li className="hidden lg:flex">
                   <a
-                    className="text-white hover:underline decoration-2 decoration-lobxs hover:text-gray-400 text font-semibold py-1 px-3"
-                    href="/#"
+                    className="text-white hover:underline decoration-2 decoration-lobxs text font-semibold py-1 px-3"
+                    href="/academia-de-trail"
                   >
                     Academia de Trail
                   </a>
                 </li>
                 <li className="hidden lg:flex">
                   <a
-                    className="text-white hover:underline decoration-2 decoration-lobxs hover:text-gray-400 text font-semibold py-1 px-3"
-                    href="/#"
+                    className="text-white hover:underline decoration-2 decoration-lobxs text font-semibold py-1 px-3"
+                    href="/contacto"
                   >
                     Contacto
                   </a>
@@ -121,7 +121,7 @@ const NavBar = () => {
             <li>
               <Link
                 className="flex flex-1 text-lg text-black hover:bg-lobxs-lighter font-semibold px-8 py-4"
-                href="/#"
+                href="/entrenamientos"
               >
                 Entrenamientos
               </Link>
@@ -129,7 +129,7 @@ const NavBar = () => {
             <li>
               <Link
                 className="flex flex-1 text-lg text-black hover:bg-lobxs-lighter font-semibold px-8 py-4"
-                href="/#"
+                href="/academia-de-trail"
               >
                 Academia de Trail
               </Link>
@@ -137,7 +137,7 @@ const NavBar = () => {
             <li>
               <Link
                 className="flex flex-1 text-lg text-black hover:bg-lobxs-lighter font-semibold px-8 py-4"
-                href="/#"
+                href="/contacto"
               >
                 Contacto
               </Link>
