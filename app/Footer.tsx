@@ -9,7 +9,7 @@ import Input from '../components/Input'
 
 const Footer = () => {
   return (
-    <footer className="relative bg-lobxsFooter bg-cover bg-neutral bg-top py-14 overflow-visible z-50">
+    <footer className="relative bg-lobxsFooter bg-cover bg-neutral bg-top py-14 overflow-visible z-10">
       <div className="flex flex-col justify-center mx-auto lg:flex-row lg:justify-between max-w-screen-lg 2xl:max-w-screen-2xl px-5 lg:px-0 h-full pt-44 z-50">
         <nav className="flex flex-col mb-5 lg:mb-0">
           <p className="font-medium text-xl text-white mb-5">Enlaces Rápidos</p>

@@ -7,7 +7,7 @@ import Product from '../components/Product'
 
 const FeaturedProducts = () => {
   return (
-    <section className="bg-white z-0 py-12">
+    <section className="bg-neutral z-0 py-12">
       <div className="flex flex-col items-center justify-center max-w-screen-2xl mx-auto px-10">
         <div>
           <h3 className="text-6xl lg:text-8xl font-bold text-black -mb-6 lg:-mb-9">

@@ -1,3 +1,4 @@
+import NavBar from '../NavBar'
 import FaqSection from './FaqSection'
 import HeroSection from './HeroSection'
 import TestimonialsSection from './TestimonialsSection'
@@ -5,12 +6,15 @@ import TrainingPlanSection from './TrainingPlanSection'
 
 const TrainingPlansPage = () => {
   return (
-    <main>
-      <HeroSection />
-      <TrainingPlanSection />
-      <TestimonialsSection />
-      <FaqSection />
-    </main>
+    <>
+      <NavBar />
+      <main>
+        <HeroSection />
+        <TrainingPlanSection />
+        <TestimonialsSection />
+        <FaqSection />
+      </main>
+    </>
   )
 }
 

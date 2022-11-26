@@ -23,7 +23,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      white: '#ededed',
+      white: '#fff',
       black: '#000000',
       lobxs: HSL('--lobxs-hue-saturation', 'var(--lobxs-lightness)'),
       'lobxs-light': HSL('--lobxs-hue-saturation', 'var(--lobxs-light)'),

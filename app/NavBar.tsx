@@ -1,19 +1,23 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-
-import Image from 'next/image'
-import Logo from '../public/img/lobxs-logo.png'
+import { useEffect, useState } from 'react'
 import Button from '../components/Button'
 import { Cart } from 'iconoir-react'
 import Drawer from '../components/Drawer'
 import Overlay from '../components/Overlay'
 import Link from 'next/link'
+import classNames from 'classnames'
+import { usePathname } from 'next/navigation'
 
-const NavBar = () => {
+type NavBarProps = {
+  alternative?: boolean
+}
+
+const NavBar = ({ alternative }: NavBarProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [showDrawer, setShowDrawer] = useState(false)
   const toggleMenu = (): void => setIsOpen(!isOpen)
+  const pathname = usePathname()
 
   useEffect(() => {
     if (isOpen || showDrawer) {
@@ -23,25 +27,46 @@ const NavBar = () => {
     }
   }, [isOpen, showDrawer])
 
+  const baseClasses = classNames(
+    'w-full z-30 absolute py-5',
+    alternative ? 'bg-white shadow-md' : 'bg-transparent'
+  )
+
+  const navigationTextClasses = classNames(
+    'hover:underline decoration-2 decoration-lobxs text font-semibold py-1 px-3',
+    alternative ? 'text-neutral-contrast' : 'text-white'
+  )
+
+  const storeButtonClasses = classNames(
+    'hidden lg:flex',
+    alternative ? '' : 'text-white border-white'
+  )
+
+  const cartButtonClasses = classNames(
+    'absolute right-16 lg:relative lg:right-auto transition-all ease-in-out duration-150 cursor-pointer hover:text-lobxs',
+    alternative ? 'text-neutral-contrast' : 'text-neutral'
+  )
+
+  const logoClasses = classNames(
+    'font-[edo] text-7xl',
+    alternative ? 'text-neutral-contrast' : 'text-white'
+  )
+
   return (
     <>
-      <nav className="w-full z-30 bg-transparent absolute">
+      <nav className={baseClasses}>
         <div className="max-w-screen-lg 2xl:max-w-screen-2xl mx-auto px-10 lg:px-0 w-full">
           <div className="flex justify-between w-full items-center">
             <Link href="/" className="flex flex-grow space-x-4">
-              <Image
-                className="lg:h-28 w-auto h-[100px]"
-                src={Logo}
-                width={200}
-                height={150}
-                alt="logo"
-              />
+              <span className={logoClasses}>LOBXS</span>
             </Link>
             <div className="flex items-center space-x-5 z-50">
               <ul className="flex items-center space-x-5 z-50">
                 <li className="hidden lg:flex">
                   <Link
-                    className="text-white hover:underline decoration-2 decoration-lobxs text font-semibold py-1 px-3"
+                    className={`${navigationTextClasses} ${
+                      pathname === '/' && 'underline'
+                    }`}
                     href="/"
                   >
                     Inicio
@@ -49,7 +74,9 @@ const NavBar = () => {
                 </li>
                 <li className="hidden lg:flex">
                   <Link
-                    className="text-white hover:underline decoration-2 decoration-lobxs text font-semibold py-1 px-3"
+                    className={`${navigationTextClasses} ${
+                      pathname === '/las-lobas' && 'underline'
+                    }`}
                     href="/las-lobas"
                   >
                     Las Lobas
@@ -57,7 +84,9 @@ const NavBar = () => {
                 </li>
                 <li className="hidden lg:flex">
                   <a
-                    className="text-white hover:underline decoration-2 decoration-lobxs text font-semibold py-1 px-3"
+                    className={`${navigationTextClasses} ${
+                      pathname === '/entrenamientos' && 'underline'
+                    }`}
                     href="/entrenamientos"
                   >
                     Entrenamientos
@@ -65,7 +94,9 @@ const NavBar = () => {
                 </li>
                 <li className="hidden lg:flex">
                   <a
-                    className="text-white hover:underline decoration-2 decoration-lobxs text font-semibold py-1 px-3"
+                    className={`${navigationTextClasses} ${
+                      pathname === '/academia-de-trail' && 'underline'
+                    }`}
                     href="/academia-de-trail"
                   >
                     Academia de Trail
@@ -73,22 +104,21 @@ const NavBar = () => {
                 </li>
                 <li className="hidden lg:flex">
                   <a
-                    className="text-white hover:underline decoration-2 decoration-lobxs text font-semibold py-1 px-3"
+                    className={`${navigationTextClasses} ${
+                      pathname === '/contacto' && 'underline'
+                    }`}
                     href="/contacto"
                   >
                     Contacto
                   </a>
                 </li>
               </ul>
-              <Button
-                variant="secondary"
-                className="hidden lg:flex text-white border-white"
-              >
+              <Button variant="secondary" className={storeButtonClasses}>
                 Tienda
               </Button>
               <Cart
                 onClick={() => setShowDrawer(!showDrawer)}
-                className="absolute right-16 lg:relative lg:right-auto hover:text-lobxs transition-all ease-in-out duration-150 cursor-pointer"
+                className={cartButtonClasses}
               />
             </div>
           </div>
@@ -147,27 +177,27 @@ const NavBar = () => {
       </nav>
       <button
         onClick={toggleMenu}
-        className="lg:hidden absolute w-11 h-11 right-app top-[27px] appearance-none z-40"
+        className="lg:hidden absolute w-11 h-11 right-app top-[32px] appearance-none z-40"
       >
         <span
-          className={`${
-            isOpen && 'scale-x-0 opacity-0'
-          } absolute w-4 h-[3px] transition-all ease-in-out origin-right rounded-full bg-white right-2 top-3`}
+          className={`${isOpen && 'scale-x-0 opacity-0'} ${
+            alternative ? 'bg-neutral-contrast' : 'bg-white'
+          } absolute w-4 h-[3px] transition-all ease-in-out origin-right rounded-full right-2 top-3`}
         />
         <span
-          className={`${
-            isOpen && 'rotate-[135deg]'
-          } absolute w-6 h-[3px] transition-all ease-in-out -translate-y-1/2 rounded-full bg-white right-2 top-1/2`}
+          className={`${isOpen && 'rotate-[135deg]'} ${
+            alternative ? 'bg-neutral-contrast' : 'bg-white'
+          } absolute w-6 h-[3px] transition-all ease-in-out -translate-y-1/2 rounded-full right-2 top-1/2`}
         />
         <span
-          className={`${
-            isOpen && 'rotate-[225deg]'
-          } absolute w-6 h-[3px] transition-all ease-in-out -translate-y-1/2 rounded-full bg-white right-2 top-1/2`}
+          className={`${isOpen && 'rotate-[225deg]'} ${
+            alternative ? 'bg-neutral-contrast' : 'bg-white'
+          } absolute w-6 h-[3px] transition-all ease-in-out -translate-y-1/2 rounded-full right-2 top-1/2`}
         />
         <span
-          className={`${
-            isOpen && 'scale-x-0 opacity-0'
-          } absolute w-4 h-[3px] transition-all ease-in-out origin-left rounded-full bg-white right-2 bottom-3`}
+          className={`${isOpen && 'scale-x-0 opacity-0'} ${
+            alternative ? 'bg-neutral-contrast' : 'bg-white'
+          } absolute w-4 h-[3px] transition-all ease-in-out origin-left rounded-full right-2 bottom-3`}
         />
       </button>
       <Drawer
