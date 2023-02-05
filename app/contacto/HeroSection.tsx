@@ -4,7 +4,7 @@ import ContactHero from '../../public/img/lobxs-contact.jpeg'
 const HeroSection = () => {
   return (
     <section className="pt-40">
-      <div className="flex flex-col lg:justify-evenly items-center lg:flex-row">
+      <div className="flex flex-col justify-center items-center lg:flex-row lg:space-x-20">
         <div className="order-2 lg:order-1 w-4/6 md:w-3/6 lg:w-2/6">
           <Image src={ContactHero} alt="lobas hero" />
         </div>

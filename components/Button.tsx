@@ -1,8 +1,8 @@
 import classNames from 'classnames'
-import React, { ReactNode } from 'react'
+import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-type ButtonProps = {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode
   variant?: string
   size?: string
@@ -26,11 +26,11 @@ const Button = ({
         variant === 'primary'
     },
     {
-      'px-5 rounded-lobxs-md font-semibold disabled:border-neutral-contrast-disabled text-lobxs border-lobxs border-2 border-2 bg-transparent disabled:hover:bg-neutral hover:bg-lobxs-lighter hover:bg-opacity-40 active:bg-opacity-60 focus-visible:bg-lobxs-lighter focus-visible:bg-opacity-40':
+      'px-5 rounded-lobxs-md font-semibold disabled:border-neutral-contrast-disabled text-lobxs border-lobxs border-2 bg-transparent disabled:hover:bg-neutral hover:bg-lobxs-lighter hover:bg-opacity-40 active:bg-opacity-60 focus-visible:bg-lobxs-lighter focus-visible:bg-opacity-40':
         variant === 'secondary'
     },
     {
-      'px-5 rounded-md text-neutral-contrast font-medium border-2 border-neutral-300 bg-neutral hover:bg-neutral-200 focus-visible:bg-neutral-200 active:bg-neutral-300':
+      'px-5 rounded-md text-neutral-contrast font-medium border-2 border-neutral-contrast bg-neutral hover:bg-neutral-200 focus-visible:bg-neutral-200 active:bg-neutral-300':
         variant === 'tertiary'
     },
     {

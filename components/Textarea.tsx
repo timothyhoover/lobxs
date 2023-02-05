@@ -1,16 +1,10 @@
-import React, {
-  forwardRef,
-  ForwardedRef,
-  InputHTMLAttributes,
-  TextareaHTMLAttributes
-} from 'react'
 import classNames from 'classnames'
+import React, { ForwardedRef, forwardRef, TextareaHTMLAttributes } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { FieldError } from 'react-hook-form'
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   variant?: string
-  error?: string | React.ReactElement
+  error?: string
   className?: string
   wrapperClasses?: string
   label?: string
@@ -19,7 +13,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   }
 }
 
-const ForwardedRefInput = (
+const TextareaField = (
   {
     variant = 'primary',
     error,
@@ -28,8 +22,8 @@ const ForwardedRefInput = (
     labelProps,
     wrapperClasses,
     ...rest
-  }: InputProps,
-  ref: ForwardedRef<HTMLInputElement>
+  }: TextAreaProps,
+  ref: ForwardedRef<HTMLTextAreaElement>
 ) => {
   if (error) {
     variant = 'danger'
@@ -50,7 +44,7 @@ const ForwardedRefInput = (
     className
   )
   const labelClasses = classNames([
-    'absolute text-neutral-contrast duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-neutral px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[25px] peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-4 left-1',
+    'absolute text-neutral-contrast duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-neutral px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-4 left-1',
     variant === 'danger' ? 'text-alert' : 'peer-focus:text-black'
   ])
 
@@ -59,16 +53,19 @@ const ForwardedRefInput = (
   return (
     <>
       <div className={wrapperClassNames}>
-        <input ref={ref} {...rest} className={inputClasses} placeholder=" " />
+        <textarea
+          ref={ref}
+          {...rest}
+          className={inputClasses}
+          placeholder=" "
+        />
         <label {...labelProps} className={labelClasses}>
           {label}
         </label>
-        <p className="text-alert top">{error}</p>
+        <p className="text-alert">{error}</p>
       </div>
     </>
   )
 }
 
-const Input = forwardRef(ForwardedRefInput)
-
-export default Input
+export default forwardRef(TextareaField)

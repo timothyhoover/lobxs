@@ -25,7 +25,7 @@ const Footer = () => {
           </ul>
         </nav>
         {/* download ebook */}
-        <div className="flex flex-col justify-center bg-white p-app rounded-md">
+        <div className="flex flex-col justify-center bg-neutral p-app rounded-md">
           <p className="font-medium text-xl">
             E-BOOK GRATUITO: LAS 7 CLAVES PARA CORRER BIEN EN MONTAÑA
           </p>
@@ -35,8 +35,9 @@ const Footer = () => {
           </p>
           <Input
             label="Correo Electrónico"
+            id="email"
             placeholder="Correo Electrónico"
-            className="focus:ring-black focus:border-black focus-visible:border-black hover:border-black"
+            wrapperClasses="my-5"
           />
           <Button variant="secondary" className="border-black text-black">
             Enviar
