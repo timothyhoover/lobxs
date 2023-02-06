@@ -1,7 +1,7 @@
 'use client'
 
 import { Cancel } from 'iconoir-react'
-import React, { MouseEventHandler } from 'react'
+import React, { ForwardedRef, forwardRef, MouseEventHandler } from 'react'
 import Overlay from './Overlay'
 
 type DrawerProps = {
@@ -10,11 +10,15 @@ type DrawerProps = {
   show: boolean
 }
 
-const Drawer = ({ children, onClick, show }: DrawerProps) => {
+const Drawer = (
+  { children, onClick, show }: DrawerProps,
+  ref: ForwardedRef<HTMLDivElement>
+) => {
   return (
     <>
       {show && <Overlay />}
       <div
+        ref={ref}
         className={`top-0 right-0 w-[35vw] bg-white p-10 pl-20 text-black fixed h-full z-50 ease-in-out duration-300 ${
           show ? 'translate-x-0 ' : 'translate-x-full'
         }`}
@@ -34,4 +38,4 @@ const Drawer = ({ children, onClick, show }: DrawerProps) => {
   )
 }
 
-export default Drawer
+export default forwardRef(Drawer)

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Button from '../components/Button'
 import { Cart } from 'iconoir-react'
 import Drawer from '../components/Drawer'
@@ -8,24 +8,31 @@ import Overlay from '../components/Overlay'
 import Link from 'next/link'
 import classNames from 'classnames'
 import { usePathname } from 'next/navigation'
+import useOutsideClick from '../hooks/useOutsideClick'
 
 type NavBarProps = {
   alternative?: boolean
 }
 
 const NavBar = ({ alternative }: NavBarProps) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [showDrawer, setShowDrawer] = useState(false)
-  const toggleMenu = (): void => setIsOpen(!isOpen)
+  const [menu, setMenu] = useState(false)
+  const [drawer, setDrawer] = useState(false)
+  const toggleMenu = () => setMenu(!menu)
+  const toggleDrawer = () => setDrawer(!drawer)
   const pathname = usePathname()
+  const drawerRef = useRef(null)
+  const hamburgerRef = useRef(null)
 
   useEffect(() => {
-    if (isOpen || showDrawer) {
+    if (menu || drawer) {
       return document.body.classList.add('modal-open')
     } else {
       return document.body.classList.remove('modal-open')
     }
-  }, [isOpen, showDrawer])
+  }, [menu, drawer])
+
+  useOutsideClick(drawerRef, () => setDrawer(false))
+  useOutsideClick(hamburgerRef, () => setMenu(false))
 
   const baseClasses = classNames(
     'w-full z-30 absolute py-5',
@@ -117,7 +124,7 @@ const NavBar = ({ alternative }: NavBarProps) => {
                 Tienda
               </Button>
               <Cart
-                onClick={() => setShowDrawer(!showDrawer)}
+                onClick={() => setDrawer(!drawer)}
                 className={cartButtonClasses}
               />
             </div>
@@ -128,7 +135,7 @@ const NavBar = ({ alternative }: NavBarProps) => {
       <nav className="w-full bg-transparent overflow-x-hidden pointer-events-none fixed top-header z-50 h-[calc(100vh-4.5rem)] xs:max-w-screen-sm">
         <ul
           className={`w-full h-full p-5 overflow-y-scroll transition-transform transform shadow-md pointer-events-auto xs:p-10 z-50 ${
-            isOpen ? 'translate-x-0' : 'translate-x-full'
+            menu ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
           <ul className="flex flex-col bg-white w-full rounded shadow-md overflow-hidden">
@@ -176,35 +183,33 @@ const NavBar = ({ alternative }: NavBarProps) => {
         </ul>
       </nav>
       <button
+        ref={hamburgerRef}
         onClick={toggleMenu}
         className="lg:hidden absolute w-11 h-11 right-app top-[32px] appearance-none z-40"
       >
         <span
-          className={`${isOpen && 'scale-x-0 opacity-0'} ${
+          className={`${menu && 'scale-x-0 opacity-0'} ${
             alternative ? 'bg-neutral-contrast' : 'bg-white'
           } absolute w-4 h-[3px] transition-all ease-in-out origin-right rounded-full right-2 top-3`}
         />
         <span
-          className={`${isOpen && 'rotate-[135deg]'} ${
+          className={`${menu && 'rotate-[135deg]'} ${
             alternative ? 'bg-neutral-contrast' : 'bg-white'
           } absolute w-6 h-[3px] transition-all ease-in-out -translate-y-1/2 rounded-full right-2 top-1/2`}
         />
         <span
-          className={`${isOpen && 'rotate-[225deg]'} ${
+          className={`${menu && 'rotate-[225deg]'} ${
             alternative ? 'bg-neutral-contrast' : 'bg-white'
           } absolute w-6 h-[3px] transition-all ease-in-out -translate-y-1/2 rounded-full right-2 top-1/2`}
         />
         <span
-          className={`${isOpen && 'scale-x-0 opacity-0'} ${
+          className={`${menu && 'scale-x-0 opacity-0'} ${
             alternative ? 'bg-neutral-contrast' : 'bg-white'
           } absolute w-4 h-[3px] transition-all ease-in-out origin-left rounded-full right-2 bottom-3`}
         />
       </button>
-      <Drawer
-        onClick={() => setShowDrawer(!showDrawer)}
-        show={showDrawer}
-      ></Drawer>
-      {isOpen && <Overlay onClick={toggleMenu} />}
+      <Drawer ref={drawerRef} onClick={toggleDrawer} show={drawer}></Drawer>
+      {menu && <Overlay onClick={toggleMenu} />}
     </>
   )
 }
