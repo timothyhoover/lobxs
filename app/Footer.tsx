@@ -4,8 +4,8 @@ import { Instagram, YouTube } from 'iconoir-react'
 import Image from 'next/image'
 import React from 'react'
 import SomosLobxs from '../public/img/somoslobxs.png'
-import Button from '../components/Button'
-import Input from '../components/Input'
+import Button from './components/Button'
+import Input from './components/Input'
 
 const Footer = () => {
   return (
@@ -33,12 +33,7 @@ const Footer = () => {
             ¡Este es nuestro regalo para ti! Déjanos tu correo electrónico y
             recibirás el E-book en tu inbox en breve.
           </p>
-          <Input
-            label="Correo Electrónico"
-            id="email"
-            placeholder="Correo Electrónico"
-            wrapperClasses="my-5"
-          />
+          <Input label="Correo Electrónico" wrapperClasses="my-5" />
           <Button variant="secondary" className="border-black text-black">
             Enviar
           </Button>

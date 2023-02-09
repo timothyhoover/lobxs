@@ -4,7 +4,8 @@ module.exports = {
   experimental: {
     appDir: true
   },
+  //
   images: {
-    domains: ['lobxs.com']
+    domains: ['lobxs.com', 'localhost']
   }
 }

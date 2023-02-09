@@ -1,12 +1,6 @@
-import React, {
-  forwardRef,
-  ForwardedRef,
-  InputHTMLAttributes,
-  TextareaHTMLAttributes
-} from 'react'
+import React, { forwardRef, ForwardedRef, InputHTMLAttributes } from 'react'
 import classNames from 'classnames'
 import { twMerge } from 'tailwind-merge'
-import { FieldError } from 'react-hook-form'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   variant?: string
@@ -17,6 +11,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   labelProps?: {
     [key: string]: any
   }
+  id?: string
 }
 
 const ForwardedRefInput = (
@@ -27,6 +22,7 @@ const ForwardedRefInput = (
     label,
     labelProps,
     wrapperClasses,
+    id,
     ...rest
   }: InputProps,
   ref: ForwardedRef<HTMLInputElement>
@@ -34,7 +30,6 @@ const ForwardedRefInput = (
   if (error) {
     variant = 'danger'
   }
-
   const inputClasses = twMerge(
     classNames([
       'block px-2.5 pb-2.5 pt-4 w-full text-neutral-contrast bg-transparent rounded-lg border appearance-none peer',
@@ -50,20 +45,28 @@ const ForwardedRefInput = (
     className
   )
   const labelClasses = classNames([
-    'absolute text-neutral-contrast duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-neutral px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[25px] peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-4 left-1',
+    'cursor-auto absolute text-neutral-contrast duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-neutral px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[25px] peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-4 left-1',
     variant === 'danger' ? 'text-alert' : 'peer-focus:text-black'
   ])
 
-  const wrapperClassNames = twMerge('relative w-full', wrapperClasses)
-
+  const wrapperClassNames = twMerge(
+    'relative w-full cursor-auto',
+    wrapperClasses
+  )
   return (
     <>
       <div className={wrapperClassNames}>
-        <input ref={ref} {...rest} className={inputClasses} placeholder=" " />
-        <label {...labelProps} className={labelClasses}>
+        <input
+          id={id || label}
+          ref={ref}
+          {...rest}
+          className={inputClasses}
+          placeholder=" "
+        />
+        <label htmlFor={id || label} {...labelProps} className={labelClasses}>
           {label}
         </label>
-        <p className="text-alert top">{error}</p>
+        <p className="text-alert">{error}</p>
       </div>
     </>
   )

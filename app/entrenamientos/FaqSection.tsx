@@ -1,7 +1,4 @@
-'use client'
-
 import Link from 'next/link'
-import React from 'react'
 
 const FaqSection = () => {
   return (

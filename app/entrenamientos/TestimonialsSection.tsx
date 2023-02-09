@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 import TedX from '../../public/img/tedx.png'
 import Rtve from '../../public/img/rtve.png'

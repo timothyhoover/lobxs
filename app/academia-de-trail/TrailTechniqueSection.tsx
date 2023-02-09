@@ -26,7 +26,6 @@ const TrailTechniqueSection = () => {
               }}
               frameBorder="0"
               allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
             ></iframe>
           </div>
         </div>

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import Veronica from '../../public/img/veronica.jpeg'
 import Maigua from '../../public/img/maigua.jpeg'
-import { Globe, Instagram, WebWindow, YouTube } from 'iconoir-react'
+import { Instagram, WebWindow, YouTube } from 'iconoir-react'
 
 const AboutSection = () => {
   return (

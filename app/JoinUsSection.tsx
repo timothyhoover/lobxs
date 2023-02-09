@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react'
 import Image from 'next/image'
 import Wolf from '../public/img/wolf.png'
-import Button from '../components/Button'
+import Button from './components/Button'
 
 const style = {
   height: 'auto',

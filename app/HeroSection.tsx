@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import Button from '../components/Button'
+import Button from './components/Button'
 import { Instagram, YouTube } from 'iconoir-react'
 import styles from '../styles/hero-section.module.css'
 
@@ -50,7 +50,6 @@ const HeroSection = () => {
             src="https://player.vimeo.com/video/722561004?muted=1&autoplay=1&loop=1&transparent=0&background=1"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
           ></iframe>
         </div>
       </header>

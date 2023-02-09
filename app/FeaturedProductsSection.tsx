@@ -1,11 +1,11 @@
-'use client'
+import React, { FC, ReactElement } from 'react'
+import Button from './components/Button'
+import ShoppingBag from './components/icons/ShoppingBag'
+import Product from './components/Product'
+import { map } from 'remeda'
+import { ApiProductProduct } from '../schemas'
 
-import { ShoppingBag } from 'iconoir-react'
-import React from 'react'
-import Button from '../components/Button'
-import Product from '../components/Product'
-
-const FeaturedProducts = () => {
+const FeaturedProducts = ({ products }: any) => {
   return (
     <section className="bg-neutral z-0 py-12">
       <div className="flex flex-col items-center justify-center max-w-screen-2xl mx-auto px-10">
@@ -18,15 +18,32 @@ const FeaturedProducts = () => {
           </h3>
         </div>
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 place-content-center gap-8 mt-10 mb-12">
-          <Product img="https://lobxs.com/wp-content/uploads/2021/01/Untitled-design-2021-01-19T003139.430.png" />
-          <Product img="https://lobxs.com/wp-content/uploads/2021/02/admin-ajax.png" />
-          <Product img="https://lobxs.com/wp-content/uploads/2021/02/Tienda-headbands-lobxs2021-min.png" />
-          <Product img="https://lobxs.com/wp-content/uploads/2021/02/admin-ajax-1.png" />
+          {map(products, (product: ApiProductProduct) => {
+            const {
+              images: { data: images },
+              description,
+              price,
+              name,
+              featured
+            } = product.attributes
+            return (
+              featured && (
+                <Product
+                  {...product.attributes}
+                  key={product.id}
+                  description={description}
+                  price={price?.toString()}
+                  name={name}
+                  images={images}
+                />
+              )
+            )
+          })}
         </div>
         <Button size="lg" variant="secondary">
           <div className="flex space-x-2">
             <p className="text-lobxs">Ir a la Tienda</p>
-            <ShoppingBag />
+            <ShoppingBag className="w-5" />
           </div>
         </Button>
       </div>
