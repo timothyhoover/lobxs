@@ -18,7 +18,7 @@ const Button = ({
   ...rest
 }: ButtonProps) => {
   const baseClasses =
-    'appearance-none flex flex-auto overflow-hidden disabled:cursor-not-allowed ring-offset-2 items-center justify-center cursor-pointer !outline-0 transition-all duration-200 ease-in-out group !pointer-events-auto'
+    'appearance-none flex flex-auto overflow-hidden disabled:cursor-not-allowed ring-offset-2 items-center cursor-pointer !outline-0 transition-all duration-200 ease-in-out group !pointer-events-auto'
 
   const variants = [
     {

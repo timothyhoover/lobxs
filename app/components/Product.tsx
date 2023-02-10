@@ -8,6 +8,7 @@ import { getStrapiMedia } from '../../utils/util'
 
 import Button from './Button'
 import Cart from './icons/Cart'
+import Spinner from './loading/Spinner'
 
 const Product = ({
   images,
@@ -43,6 +44,7 @@ const Product = ({
           </span>
           <Button>
             <Cart className="text-white text-sm w-7" />
+            {/* <Spinner className="text-white fill-blue text-sm w-7" /> */}
           </Button>
         </div>
       </div>

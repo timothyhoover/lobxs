@@ -1,4 +1,3 @@
-import React, { FC, ReactElement } from 'react'
 import Button from './components/Button'
 import ShoppingBag from './components/icons/ShoppingBag'
 import Product from './components/Product'

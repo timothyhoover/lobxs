@@ -120,9 +120,11 @@ const NavBar = ({ alternative }: NavBarProps) => {
                   </a>
                 </li>
               </ul>
-              <Button variant="secondary" className={storeButtonClasses}>
-                Tienda
-              </Button>
+              <Link href="/tienda">
+                <Button variant="secondary" className={storeButtonClasses}>
+                  Tienda
+                </Button>
+              </Link>
               <Cart
                 onClick={() => setDrawer(!drawer)}
                 className={cartButtonClasses}
