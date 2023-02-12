@@ -6,20 +6,22 @@
     "start": "next start"
   },
   "dependencies": {
-    "@hookform/error-message": "^2.0.0",
+    "@builder.io/react": "^2.0.13",
+    "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^2.9.10",
     "@types/uuid": "^9.0.0",
     "classnames": "^2.3.2",
-    "daisyui": "^2.36.1",
-    "framer-motion": "^7.6.6",
-    "iconoir-react": "^5.4.0",
+    "daisyui": "^2.50.0",
+    "framer-motion": "^7.10.3",
+    "iconoir-react": "^5.5.2",
     "next": "latest",
-    "next-sanity": "^1.0.0",
+    "next-sanity": "^1.1.0",
+    "prettier": "^2.8.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.39.1",
-    "remeda": "^1.2.0",
-    "tailwind-merge": "^1.8.0",
+    "react-hook-form": "^7.43.0",
+    "remeda": "^1.6.1",
+    "tailwind-merge": "^1.9.1",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
@@ -28,8 +30,8 @@
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
     "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.18",
-    "tailwindcss": "^3.2.2",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4",
     "typescript": "4.7.2"
   }
 }

@@ -23,27 +23,9 @@ const StorePage = async () => {
           </div>
           {/* Products */}
           <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 place-content-center gap-8 mt-10 mb-12">
-            {map(products, (product: ApiProductProduct) => {
-              const {
-                images: { data: images },
-                description,
-                price,
-                name,
-                featured
-              } = product.attributes
-              return (
-                featured && (
-                  <Product
-                    {...product.attributes}
-                    key={product.id}
-                    description={description}
-                    price={price?.toString()}
-                    name={name}
-                    images={images}
-                  />
-                )
-              )
-            })}
+            {map(products, ({ attributes, id }: ApiProductProduct) => (
+              <Product attributes={attributes} key={id} id={id} />
+            ))}
           </div>
         </div>
       </main>

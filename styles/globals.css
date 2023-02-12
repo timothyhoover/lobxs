@@ -245,3 +245,7 @@
   height: 100vh;
   overflow-y: hidden;
 }
+
+.base-hover-state {
+  @apply cursor-pointer transition-all ease-in-out duration-150;
+}
