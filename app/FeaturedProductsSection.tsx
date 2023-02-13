@@ -28,12 +28,9 @@ const FeaturedProducts = ({ products }: any) => {
             return (
               featured && (
                 <Product
-                  {...product.attributes}
+                  attributes={product.attributes}
+                  id={product.id}
                   key={product.id}
-                  description={description}
-                  price={price?.toString()}
-                  name={name}
-                  images={images}
                 />
               )
             )

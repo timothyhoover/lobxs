@@ -1,23 +1,23 @@
 const fetchProducts = async () => {
-  let products
   try {
-    products = await fetch('http://0.0.0.0:1337/api/products?populate=*', {
-      method: 'GET',
-      headers: {
-        Authorization: `bearer ${process.env.NEXT_STRAPI_TOKEN}`
+    const products = await fetch(
+      'http://0.0.0.0:1337/api/products?populate=*',
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `bearer ${process.env.NEXT_STRAPI_TOKEN}`
+        }
       }
-    })
+    )
+    return await products.json()
   } catch (error) {
     return error
   }
-
-  return await products.json()
 }
 
 const fetchProduct = async (id: number) => {
-  let products
   try {
-    products = await fetch(
+    const product = await fetch(
       `http://0.0.0.0:1337/api/products/${id}?populate=*`,
       {
         method: 'GET',
@@ -26,11 +26,10 @@ const fetchProduct = async (id: number) => {
         }
       }
     )
+    return await product.json()
   } catch (error) {
     return error
   }
-
-  return await products.json()
 }
 
 export { fetchProducts, fetchProduct }

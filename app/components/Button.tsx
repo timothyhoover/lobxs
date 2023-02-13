@@ -26,7 +26,7 @@ const Button = ({
         variant === 'primary'
     },
     {
-      'px-5 rounded-lobxs-md font-semibold disabled:border-neutral-contrast-disabled text-lobxs border-lobxs border-2 bg-transparent disabled:hover:bg-neutral hover:bg-lobxs-lighter hover:bg-opacity-40 active:bg-opacity-60 focus-visible:bg-lobxs-lighter focus-visible:bg-opacity-40':
+      'px-5 rounded-lobxs-md font-semibold disabled:border-neutral-contrast-disabled text-lobxs border-lobxs border-2 bg-transparent disabled:hover:bg-neutral hover:bg-lobxs-lighter hover:bg-opacity-20 active:bg-opacity-60 focus-visible:bg-lobxs-lighter focus-visible:bg-opacity-40':
         variant === 'secondary'
     },
     {

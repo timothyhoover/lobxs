@@ -1,5 +1,6 @@
 'use client'
 
+import classNames from 'classnames'
 import Image, { ImageLoaderProps } from 'next/image'
 import React, { useState } from 'react'
 import { first, map } from 'remeda'
@@ -35,7 +36,12 @@ const ProductDetailImages = ({ images: { data } }: ImageType) => {
             attributes: { url, alternativeText }
           }: ImageType = img
           return (
-            <div className="bg-white shadow rounded-md flex justify-center overflow-hidden base-hover-state hover:outline hover:outline-alert">
+            <div
+              className={classNames(
+                'bg-white shadow rounded-md flex justify-center overflow-hidden base-hover-state hover:outline hover:outline-alert',
+                mainImg === img && 'outline outline-alert'
+              )}
+            >
               <Image
                 onClick={() => handleImgChange(img)}
                 className="w-full"
