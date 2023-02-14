@@ -1,3 +1,5 @@
+// make test
+
 const fetchProducts = async () => {
   try {
     const products = await fetch(
