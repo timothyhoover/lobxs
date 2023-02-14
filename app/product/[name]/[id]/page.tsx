@@ -1,6 +1,7 @@
 import React from 'react'
 import { fetchProduct } from '../../../../utils/fetch'
 import { formatCurrency } from '../../../../utils/util'
+import AddToCart from '../../../components/AddToCart'
 import Button from '../../../components/Button'
 import ProductDetailImages from '../../../components/ProductDetailImages'
 import VariationSelector from '../../../components/VariationSelector'
@@ -41,12 +42,7 @@ const ProductDetailsPage = async ({
             </div>
             <div className="mt-3 space-y-5">
               <p>{description}</p>
-              {variations.data.length > 0 && (
-                <VariationSelector variations={variations.data} />
-              )}
-              <div>
-                <Button variant="secondary">Añadir al Carrito</Button>
-              </div>
+              <AddToCart variations={variations.data} />
             </div>
           </div>
         </div>
