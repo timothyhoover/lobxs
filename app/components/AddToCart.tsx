@@ -9,17 +9,10 @@ import VariationSelector from './VariationSelector'
 type VariationType = ApiProductProduct['attributes']['variations']
 
 const AddToCart = ({ variations }: VariationType) => {
-  const [disableButton, setDisableButton] = useState(true)
   const [variation, setVariation] = useState<VariationType>(first(variations))
   const handleSelection = (selectedVariation: VariationType) => {
-    setDisableButton(false)
     setVariation(selectedVariation)
   }
-  useEffect(() => {
-    if (variation) {
-      setDisableButton(false)
-    }
-  }, [])
 
   return (
     <>
@@ -31,9 +24,7 @@ const AddToCart = ({ variations }: VariationType) => {
         />
       )}
       <div>
-        <Button disabled={disableButton} variant="secondary">
-          Añadir al Carrito
-        </Button>
+        <Button variant="secondary">Añadir al Carrito</Button>
       </div>
     </>
   )
