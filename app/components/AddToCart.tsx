@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { first } from 'remeda'
 import { ApiProductProduct } from '../../schemas'
 import Button from './Button'
