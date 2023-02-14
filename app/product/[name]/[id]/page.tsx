@@ -2,10 +2,10 @@ import React from 'react'
 import { fetchProduct } from '../../../../utils/fetch'
 import { formatCurrency } from '../../../../utils/util'
 import AddToCart from '../../../components/AddToCart'
-import Button from '../../../components/Button'
 import ProductDetailImages from '../../../components/ProductDetailImages'
-import VariationSelector from '../../../components/VariationSelector'
 import NavBar from '../../../NavBar'
+
+export const dynamic = 'force-dynamic'
 
 const ProductDetailsPage = async ({
   params: { id }
