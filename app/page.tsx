@@ -1,10 +1,8 @@
-import { getServerSession } from 'next-auth'
 import FeaturedProducts from './FeaturedProductsSection'
 import FeaturedVideoSection from './FeaturedVideoSection'
 import HeroSection from './HeroSection'
 import JoinUsSection from './JoinUsSection'
 import NavBar from './NavBar'
-import Providers from './Providers'
 import TestimonialSection from './TestimonialSection'
 import WelcomeSection from './WelcomeSection'
 
@@ -26,13 +24,9 @@ const getProducts = async () => {
 
 const HomePage = async () => {
   const { data: products } = await getProducts()
-  const session = await getServerSession()
-  console.log(session)
   return (
     <main>
-      <Providers session={session}>
-        <NavBar />
-      </Providers>
+      <NavBar />
       <HeroSection />
       <WelcomeSection />
       <FeaturedVideoSection />
