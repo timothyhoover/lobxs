@@ -9,6 +9,7 @@ import Link from 'next/link'
 import classNames from 'classnames'
 import { usePathname } from 'next/navigation'
 import useOutsideClick from '../hooks/useOutsideClick'
+import { useSession } from 'next-auth/react'
 
 type NavBarProps = {
   alternative?: boolean
@@ -57,6 +58,12 @@ const NavBar = ({ alternative }: NavBarProps) => {
   const logoClasses = classNames(
     'font-[edo] text-7xl',
     alternative ? 'text-neutral-contrast' : 'text-white'
+  )
+
+  const LoginButton = () => (
+    <a href={`http://localhost:1337/api/connect/google`}>
+      <Button>Connect to Google</Button>
+    </a>
   )
 
   return (
@@ -129,6 +136,9 @@ const NavBar = ({ alternative }: NavBarProps) => {
                 onClick={() => setDrawer(!drawer)}
                 className={cartButtonClasses}
               />
+              {/* <Button onClick={() => handleOAuth()}>Sign In</Button>
+               */}
+              <LoginButton />
             </div>
           </div>
         </div>

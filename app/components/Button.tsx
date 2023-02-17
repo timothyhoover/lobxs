@@ -22,7 +22,7 @@ const Button = ({
 
   const variants = [
     {
-      'px-5 rounded-lobxs-md disabled:bg-neutral-contrast-disabled disabled:bg-neutral-contrast-disabled bg-lobxs text-neutral font-semibold hover:lobxs-lightness-35 active:lobxs-lightness-25 duration-200 ease-in-out focus-visible:ring-2 focus-visible:ring-lobxs':
+      'px-5 rounded-lobxs-md disabled:bg-neutral-contrast-disabled disabled:bg-neutral-contrast-disabled bg-lobxs text-white font-semibold hover:lobxs-lightness-35 active:lobxs-lightness-25 duration-200 ease-in-out focus-visible:ring-2 focus-visible:ring-lobxs':
         variant === 'primary'
     },
     {

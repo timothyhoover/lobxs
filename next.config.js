@@ -1,3 +1,5 @@
+const securityHeaders = require('./securityHeaders')
+
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
@@ -8,4 +10,12 @@ module.exports = {
   images: {
     domains: ['lobxs.com', 'localhost']
   }
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/:path*',
+  //       headers: {}
+  //     }
+  //   ]
+  // }
 }
