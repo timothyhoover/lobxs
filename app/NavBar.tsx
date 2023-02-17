@@ -9,7 +9,6 @@ import Link from 'next/link'
 import classNames from 'classnames'
 import { usePathname } from 'next/navigation'
 import useOutsideClick from '../hooks/useOutsideClick'
-import { useSession } from 'next-auth/react'
 
 type NavBarProps = {
   alternative?: boolean
