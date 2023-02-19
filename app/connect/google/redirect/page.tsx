@@ -1,7 +1,7 @@
 import React from 'react'
 import Spinner from '../../../components/loading/Spinner'
-import NavBar from '../../../NavBar'
-import OAuth from '../../../OAuth'
+import NavBar from '../../../components/NavBar'
+import OAuth from '../../../components/OAuth'
 
 const OAuthPage = () => {
   return (

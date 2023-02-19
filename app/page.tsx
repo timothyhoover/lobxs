@@ -2,7 +2,7 @@ import FeaturedProducts from './FeaturedProductsSection'
 import FeaturedVideoSection from './FeaturedVideoSection'
 import HeroSection from './HeroSection'
 import JoinUsSection from './JoinUsSection'
-import NavBar from './NavBar'
+import NavBar from './components/NavBar'
 import TestimonialSection from './TestimonialSection'
 import WelcomeSection from './WelcomeSection'
 

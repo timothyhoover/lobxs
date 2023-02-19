@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../NavBar'
+import NavBar from '../components/NavBar'
 import AboutSection from './AboutSection'
 import HeroSection from './HeroSection'
 import JoinUsSection from './JoinUsSection'

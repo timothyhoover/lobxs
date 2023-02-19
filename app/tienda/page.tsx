@@ -3,7 +3,7 @@ import { map } from 'remeda'
 import { ApiProductProduct } from '../../schemas'
 import { fetchProducts } from '../../utils/fetch'
 import Product from '../components/Product'
-import NavBar from '../NavBar'
+import NavBar from '../components/NavBar'
 
 const StorePage = async () => {
   const { data: products } = await fetchProducts()

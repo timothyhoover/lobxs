@@ -3,7 +3,7 @@ import { fetchProduct } from '../../../../utils/fetch'
 import { formatCurrency } from '../../../../utils/util'
 import AddToCart from '../../../components/AddToCart'
 import ProductDetailImages from '../../../components/ProductDetailImages'
-import NavBar from '../../../NavBar'
+import NavBar from '../../../components/NavBar'
 
 export const dynamic = 'force-dynamic'
 

@@ -1,5 +1,4 @@
 export const options = {
-  position: 'bottom-center',
   toastOptions: {
     className: 'bg-white',
     style: {

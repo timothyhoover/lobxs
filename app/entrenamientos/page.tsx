@@ -1,4 +1,4 @@
-import NavBar from '../NavBar'
+import NavBar from '../components/NavBar'
 import FaqSection from './FaqSection'
 import HeroSection from './HeroSection'
 import TestimonialsSection from './TestimonialsSection'

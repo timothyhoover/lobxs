@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast'
 import { options } from '../../../lib/toastOptions'
 
 const Toast = () => {
-  return <Toaster {...options} />
+  return <Toaster position="bottom-center" {...options} />
 }
 
 export default Toast

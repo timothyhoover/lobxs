@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import React, { ReactNode } from 'react'
-import Footer from './Footer'
+import Footer from './components/Footer'
 import Toast from './components/loading/Toast'
 
 type Props = {

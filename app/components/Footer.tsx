@@ -3,9 +3,9 @@
 import { Instagram, YouTube } from 'iconoir-react'
 import Image from 'next/image'
 import React from 'react'
-import SomosLobxs from '../public/img/somoslobxs.png'
-import Button from './components/Button'
-import Input from './components/Input'
+import SomosLobxs from '../../public/img/somoslobxs.png'
+import Button from './Button'
+import Input from './Input'
 
 const Footer = () => {
   return (

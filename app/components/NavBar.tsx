@@ -1,14 +1,14 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Button from './components/Button'
+import Button from './Button'
 import { Cart } from 'iconoir-react'
-import Drawer from './components/Drawer'
-import Overlay from './components/Overlay'
+import Drawer from './Drawer'
+import Overlay from './Overlay'
 import Link from 'next/link'
 import classNames from 'classnames'
 import { usePathname } from 'next/navigation'
-import useOutsideClick from '../hooks/useOutsideClick'
+import useOutsideClick from '../../hooks/useOutsideClick'
 
 type NavBarProps = {
   alternative?: boolean
