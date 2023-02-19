@@ -1,10 +1,9 @@
-'use client'
-
-import { Instagram, YouTube } from 'iconoir-react'
 import Image from 'next/image'
 import React from 'react'
 import SomosLobxs from '../../public/img/somoslobxs.png'
 import Button from './Button'
+import Instagram from './icons/Instagram'
+import Youtube from './icons/Youtube'
 import Input from './Input'
 
 const Footer = () => {
@@ -57,7 +56,7 @@ const Footer = () => {
               height={36}
               className="hover:text-lobxs cursor-pointer"
             />
-            <YouTube
+            <Youtube
               width={36}
               height={36}
               className="hover:text-lobxs cursor-pointer"

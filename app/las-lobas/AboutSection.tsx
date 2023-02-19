@@ -1,10 +1,10 @@
-'use client'
-
 import Image from 'next/image'
 import React from 'react'
 import Veronica from '../../public/img/veronica.jpeg'
 import Maigua from '../../public/img/maigua.jpeg'
-import { Instagram, WebWindow, YouTube } from 'iconoir-react'
+import Instagram from '../components/icons/Instagram'
+import Youtube from '../components/icons/Youtube'
+import WebWindow from '../components/icons/WebWindow'
 
 const AboutSection = () => {
   return (
@@ -41,7 +41,7 @@ const AboutSection = () => {
               </a>{' '}
               💪🏽
             </p>
-            <Instagram className="hover:text-lobxs hover:cursor-pointer text-black my-5 text-2xl" />
+            <Instagram className="hover:text-lobxs hover:cursor-pointer text-black my-5 text-2xl w-6 h-6" />
             <q className="text-neutral-contrast-light font-serif italic">
               Si te da miedo, hazlo con miedo, pero hazlo. Tu libertad empieza
               donde acaban tus prejuicios.
@@ -69,9 +69,9 @@ const AboutSection = () => {
               </li>
             </ul>
             <div className="flex space-x-3">
-              <Instagram className="hover:text-lobxs hover:cursor-pointer text-black my-5 text-2xl" />
-              <YouTube className="hover:text-lobxs hover:cursor-pointer text-black my-5 text-2xl" />
-              <WebWindow className="hover:text-lobxs hover:cursor-pointer text-black my-5 text-2xl" />
+              <Instagram className="hover:text-lobxs hover:cursor-pointer text-black my-5 text-2xl w-6 h-6" />
+              <Youtube className="hover:text-lobxs hover:cursor-pointer text-black my-5 text-2xl w-6 h-6" />
+              <WebWindow className="hover:text-lobxs hover:cursor-pointer text-black my-5 text-2xl w-6 h-6" />
             </div>
             <q className="text-neutral-contrast-light font-serif italic">
               Elegí vivir. Y porque hice esa elección, no tengo miedo. Yo he

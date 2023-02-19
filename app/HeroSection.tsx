@@ -1,9 +1,8 @@
-'use client'
-
 import React from 'react'
 import Button from './components/Button'
-import { Instagram, YouTube } from 'iconoir-react'
 import styles from '../styles/hero-section.module.css'
+import Instagram from './components/icons/Instagram'
+import Youtube from './components/icons/Youtube'
 
 const HeroSection = () => {
   return (
@@ -37,7 +36,7 @@ const HeroSection = () => {
                 width={36}
                 height={36}
               />
-              <YouTube
+              <Youtube
                 className="text-neutral hover:text-lobxs cursor-pointer transition-all ease-in-out duration-150"
                 width={36}
                 height={36}

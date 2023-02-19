@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Button from './Button'
-import { Cart } from 'iconoir-react'
 import Drawer from './Drawer'
 import Overlay from './Overlay'
 import Link from 'next/link'
 import classNames from 'classnames'
 import { usePathname } from 'next/navigation'
 import useOutsideClick from '../../hooks/useOutsideClick'
+import Cart from './icons/Cart'
 
 type NavBarProps = {
   alternative?: boolean
@@ -52,7 +52,7 @@ const NavBar = ({ alternative }: NavBarProps) => {
   )
 
   const cartButtonClasses = classNames(
-    'absolute right-16 lg:relative lg:right-auto transition-all ease-in-out duration-150 cursor-pointer hover:text-lobxs',
+    'w-6 h-6 absolute right-16 lg:relative lg:right-auto transition-all ease-in-out duration-150 cursor-pointer hover:text-lobxs',
     alternative ? 'text-neutral-contrast' : 'text-neutral'
   )
 

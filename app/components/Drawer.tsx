@@ -1,7 +1,7 @@
 'use client'
 
-import { Cancel } from 'iconoir-react'
 import React, { ForwardedRef, forwardRef, MouseEventHandler } from 'react'
+import Cancel from './icons/Cancel'
 import Overlay from './Overlay'
 
 type DrawerProps = {
