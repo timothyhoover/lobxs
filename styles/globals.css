@@ -37,6 +37,8 @@
     --neutral-200: 229, 229, 229; /* Two steps away from base neutral background color */
     /* REF: gray-300 */
     --neutral-300: 212, 212, 212; /* Three step away from base neutral background color */
+    /* REF: gray-400 */
+    --neutral-400: 195, 195, 195; /* Four step away from base neutral background color */
     /* REF: gray-750 / #303030 */
     --neutral-contrast: 48, 48, 48; /* Default contrasting color for text, icons, etc. */
     /* REF: gray-500 */
@@ -51,7 +53,7 @@
     --warn-contrast: 0, 0, 0; /* Text and icon contrast color for --warn */
     --success: 5, 127, 62; /* Used for indicating success */
     --success-contrast: 255, 255, 255; /* Text and icon contrast color for --success */
-    --link: var(--lobxs); /* Inline text link color */
+    --link: #16b7de; /* Inline text link color */
     --blue: #16b7de;
 
     /* Fonts */
@@ -67,7 +69,6 @@
 
     /* Spacing */
     --app: 1.25rem; /* Used for x padding */
-    --button-fixed: 0px; /* Default padding on all patron containers, overridden by fixed lobxs button */
   }
 
   /* CSS Variable overrides for dark mode */
@@ -239,13 +240,15 @@
   .text-shadow-none {
     text-shadow: none;
   }
+  .modal-open {
+    height: 100vh;
+    overflow-y: hidden;
+  }
 }
-
-.modal-open {
-  height: 100vh;
-  overflow-y: hidden;
-}
-
 .base-hover-state {
   @apply cursor-pointer transition-all ease-in-out duration-150;
+}
+
+.btn-black {
+  @apply border-neutral-contrast text-neutral-contrast hover:bg-neutral-contrast hover:bg-opacity-10 active:bg-opacity-20;
 }

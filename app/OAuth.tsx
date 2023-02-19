@@ -2,11 +2,15 @@
 
 import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+import { useCookies } from 'react-cookie'
+import { add } from 'date-fns'
 
-const Oauth = () => {
+const OAuth = () => {
   const [text, setText] = useState('Loading...')
   const router = useRouter()
   const searchParams = useSearchParams()
+  const [, setCookie] = useCookies(['jwt'])
+  const oneMonthDelay = () => add(new Date(), { months: 1 })
 
   useEffect(() => {
     fetch(`http://localhost:1337/api/auth/google/callback?${searchParams}`)
@@ -18,7 +22,12 @@ const Oauth = () => {
       })
       .then(res => res.json())
       .then(res => {
-        localStorage.setItem('jwt', res.jwt)
+        setCookie('jwt', res.jwt, {
+          path: '/',
+          domain: window.location.hostname,
+          secure: true,
+          expires: oneMonthDelay()
+        })
         setText('¡Éxito! Estará redirigido en unos segundos...')
         setTimeout(() => router.push('/'), 3000) // Redirect to homepage after 3 sec
       })
@@ -31,4 +40,4 @@ const Oauth = () => {
   return <p>{text}</p>
 }
 
-export default Oauth
+export default OAuth

@@ -35,6 +35,7 @@ module.exports = {
       'neutral-100': RGB('--neutral-100'),
       'neutral-200': RGB('--neutral-200'),
       'neutral-300': RGB('--neutral-300'),
+      'neutral-400': RGB('--neutral-400'),
       'neutral-contrast': RGB('--neutral-contrast'),
       'neutral-contrast-light': RGB('--neutral-contrast-light'),
       'neutral-contrast-alt': RGB('--neutral-contrast-alt'),
@@ -46,7 +47,7 @@ module.exports = {
       'warn-contrast': RGB('--warn-contrast'),
       success: RGB('--success'),
       'success-contrast': RGB('--success-contrast'),
-      link: RGB('--link'),
+      link: '#16b7de',
       blue: '#16b7de'
     },
     fontFamily: {

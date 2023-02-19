@@ -1,17 +1,18 @@
 import React, { forwardRef, ForwardedRef, InputHTMLAttributes } from 'react'
 import classNames from 'classnames'
 import { twMerge } from 'tailwind-merge'
+import { v4 as uuidv4 } from 'uuid'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   variant?: string
   error?: string | React.ReactElement
   className?: string
   wrapperClasses?: string
+  labelClassNames?: string
   label?: string
   labelProps?: {
     [key: string]: any
   }
-  id?: string
 }
 
 const ForwardedRefInput = (
@@ -22,7 +23,7 @@ const ForwardedRefInput = (
     label,
     labelProps,
     wrapperClasses,
-    id,
+    labelClassNames,
     ...rest
   }: InputProps,
   ref: ForwardedRef<HTMLInputElement>
@@ -30,9 +31,10 @@ const ForwardedRefInput = (
   if (error) {
     variant = 'danger'
   }
+  const id = uuidv4()
   const inputClasses = twMerge(
     classNames([
-      'block px-2.5 pb-2.5 pt-4 w-full text-neutral-contrast bg-transparent rounded-lg border appearance-none peer',
+      'block px-2.5 pb-2 pt-2.5 w-full text-neutral-contrast bg-transparent rounded-md border appearance-none peer',
       {
         'border-neutral-contrast-light focus:ring-1 focus:ring-black focus:border-black focus:outline-none hover:border-black':
           variant === 'primary'
@@ -44,10 +46,13 @@ const ForwardedRefInput = (
     ]),
     className
   )
-  const labelClasses = classNames([
-    'cursor-auto absolute text-neutral-contrast duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-neutral px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[25px] peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-4 left-1',
-    variant === 'danger' ? 'text-alert' : 'peer-focus:text-black'
-  ])
+  const labelClasses = twMerge(
+    classNames([
+      'cursor-auto absolute text-neutral-contrast duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-neutral px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-[22px] peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-4 left-1',
+      variant === 'danger' ? 'text-alert' : 'peer-focus:text-black'
+    ]),
+    labelClassNames
+  )
 
   const wrapperClassNames = twMerge(
     'relative w-full cursor-auto',
@@ -57,13 +62,13 @@ const ForwardedRefInput = (
     <>
       <div className={wrapperClassNames}>
         <input
-          id={id || label}
+          id={id}
           ref={ref}
           {...rest}
           className={inputClasses}
           placeholder=" "
         />
-        <label htmlFor={id || label} {...labelProps} className={labelClasses}>
+        <label htmlFor={id} {...labelProps} className={labelClasses}>
           {label}
         </label>
         <p className="text-alert">{error}</p>

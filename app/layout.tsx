@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import React, { ReactNode } from 'react'
 import Footer from './Footer'
+import Toast from './components/loading/Toast'
 
 type Props = {
   children?: ReactNode
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: Props) {
       </head>
       <body>
         {children}
+        <Toast />
         <Footer />
       </body>
     </html>

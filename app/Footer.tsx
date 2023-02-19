@@ -25,7 +25,7 @@ const Footer = () => {
           </ul>
         </nav>
         {/* download ebook */}
-        <div className="flex flex-col justify-center bg-neutral p-app rounded-md">
+        <form className="flex flex-col justify-center bg-white p-app rounded-md">
           <p className="font-medium text-xl">
             E-BOOK GRATUITO: LAS 7 CLAVES PARA CORRER BIEN EN MONTAÑA
           </p>
@@ -33,11 +33,19 @@ const Footer = () => {
             ¡Este es nuestro regalo para ti! Déjanos tu correo electrónico y
             recibirás el E-book en tu inbox en breve.
           </p>
-          <Input label="Correo Electrónico" wrapperClasses="my-5" />
-          <Button variant="secondary" className="border-black text-black">
+          <Input
+            label="Correo Electrónico"
+            wrapperClasses="my-5"
+            labelClassNames="bg-white"
+          />
+          <Button
+            size="sm"
+            variant="secondary"
+            className="border-black text-black"
+          >
             Enviar
           </Button>
-        </div>
+        </form>
       </div>
       <div className="max-w-screen-lg 2xl:max-w-screen-2xl mx-auto mt-8 px-5 lg:px-0">
         <div className="bg-white h-[1px] w-full" />

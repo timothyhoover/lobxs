@@ -46,7 +46,9 @@ const NavBar = ({ alternative }: NavBarProps) => {
 
   const storeButtonClasses = classNames(
     'hidden lg:flex',
-    alternative ? '' : 'text-white border-white'
+    alternative
+      ? 'border-neutral-contrast text-neutral-contrast hover:bg-neutral-contrast hover:bg-opacity-10 active:bg-opacity-20'
+      : 'text-white border-white'
   )
 
   const cartButtonClasses = classNames(
@@ -59,12 +61,6 @@ const NavBar = ({ alternative }: NavBarProps) => {
     alternative ? 'text-neutral-contrast' : 'text-white'
   )
 
-  const LoginButton = () => (
-    <a href={`http://localhost:1337/api/connect/google`}>
-      <Button>Connect to Google</Button>
-    </a>
-  )
-
   return (
     <>
       <nav className={baseClasses}>
@@ -74,7 +70,7 @@ const NavBar = ({ alternative }: NavBarProps) => {
               <span className={logoClasses}>LOBXS</span>
             </Link>
             <div className="flex items-center space-x-5 z-50">
-              <ul className="flex items-center space-x-5 z-50">
+              <ul className="flex items-center 2xl:space-x-5 space-x-1 z-50">
                 <li className="hidden lg:flex">
                   <Link
                     className={`${navigationTextClasses} ${
@@ -127,8 +123,21 @@ const NavBar = ({ alternative }: NavBarProps) => {
                 </li>
               </ul>
               <Link href="/tienda">
-                <Button variant="secondary" className={storeButtonClasses}>
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  className={storeButtonClasses}
+                >
                   Tienda
+                </Button>
+              </Link>
+              <Link href="/login">
+                <Button
+                  size="sm"
+                  className={storeButtonClasses}
+                  variant="secondary"
+                >
+                  Login
                 </Button>
               </Link>
               <Cart
@@ -137,13 +146,12 @@ const NavBar = ({ alternative }: NavBarProps) => {
               />
               {/* <Button onClick={() => handleOAuth()}>Sign In</Button>
                */}
-              <LoginButton />
             </div>
           </div>
         </div>
       </nav>
       {/* mobile nav */}
-      <nav className="w-full bg-transparent overflow-x-hidden pointer-events-none fixed top-header z-50 h-[calc(100vh-4.5rem)] xs:max-w-screen-sm">
+      <nav className="w-full bg-transparent overflow-x-hidden pointer-events-none fixed top-header z-50 h-[calc(100vh-4.5rem)] xs:max-w-screen-sm lg:hidden">
         <ul
           className={`w-full h-full p-5 overflow-y-scroll transition-transform transform shadow-md pointer-events-auto xs:p-10 z-50 ${
             menu ? 'translate-x-0' : 'translate-x-full'
