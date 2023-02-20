@@ -9,12 +9,15 @@ import classNames from 'classnames'
 import { usePathname } from 'next/navigation'
 import useOutsideClick from '../../hooks/useOutsideClick'
 import Cart from './icons/Cart'
+import UserSettings from './userSettings'
+import { AdminUser } from '../../schemas'
 
 type NavBarProps = {
   alternative?: boolean
+  user?: AdminUser
 }
 
-const NavBar = ({ alternative }: NavBarProps) => {
+const NavBar = ({ user, alternative }: NavBarProps) => {
   const [menu, setMenu] = useState(false)
   const [drawer, setDrawer] = useState(false)
   const toggleMenu = () => setMenu(!menu)
@@ -131,21 +134,11 @@ const NavBar = ({ alternative }: NavBarProps) => {
                   Tienda
                 </Button>
               </Link>
-              <Link href="/login">
-                <Button
-                  size="sm"
-                  className={storeButtonClasses}
-                  variant="secondary"
-                >
-                  Login
-                </Button>
-              </Link>
               <Cart
                 onClick={() => setDrawer(!drawer)}
                 className={cartButtonClasses}
               />
-              {/* <Button onClick={() => handleOAuth()}>Sign In</Button>
-               */}
+              <UserSettings user={user} className={storeButtonClasses} />
             </div>
           </div>
         </div>

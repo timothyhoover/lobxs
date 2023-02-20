@@ -27,7 +27,7 @@ const Drawer = (
           className="flex items-center cursor-pointer fixed right-5 top-3 lg:right-10 lg:top-6"
           onClick={onClick}
         >
-          <Cancel className="text-4xl text-black" />
+          <Cancel className="text-4xl w-10 h-10 text-black" />
         </button>
         {children}
         <h3 className="mt-20 text-4xl font-semibold text-black">

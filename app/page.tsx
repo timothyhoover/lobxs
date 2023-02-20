@@ -5,6 +5,7 @@ import JoinUsSection from './JoinUsSection'
 import NavBar from './components/NavBar'
 import TestimonialSection from './TestimonialSection'
 import WelcomeSection from './WelcomeSection'
+import NavServer from './components/NavBarServer'
 
 const getProducts = async () => {
   let products
@@ -26,7 +27,7 @@ const HomePage = async () => {
   const { data: products } = await getProducts()
   return (
     <main>
-      <NavBar />
+      <NavServer />
       <HeroSection />
       <WelcomeSection />
       <FeaturedVideoSection />

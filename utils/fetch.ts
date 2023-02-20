@@ -51,33 +51,18 @@ const fetchTrainingPlans = async () => {
   }
 }
 
-const launchOAuth = async () => {
+const fetchUser = async (jwt: string | undefined) => {
   try {
-    const res = await fetch(`http://localhost:1337/api/connect/google`, {
-      method: 'GET'
+    const response = await fetch('http://0.0.0.0:1337/api/users/me', {
+      method: 'GET',
+      headers: {
+        Authorization: `bearer ${jwt}`
+      }
     })
-    console.log(res)
-    return await res.json()
+    return await response.json()
   } catch (error) {
     return error
   }
 }
 
-const authenticateSSO = async (searchParams: any) => {
-  try {
-    const user = await fetch(
-      `http://0.0.0.0:1337/api/auth/google/callback?id_token=${searchParams.id_token}`
-    )
-    return await user.json()
-  } catch (error) {
-    return error
-  }
-}
-
-export {
-  fetchProducts,
-  fetchProduct,
-  fetchTrainingPlans,
-  launchOAuth,
-  authenticateSSO
-}
+export { fetchProducts, fetchProduct, fetchTrainingPlans, fetchUser }
