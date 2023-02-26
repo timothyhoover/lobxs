@@ -59,80 +59,79 @@ const RegisterForm = () => {
     setRegisterInProcess(false)
   }
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="bg-white p-10 shadow rounded-md min-w-[375px] md:min-w-[600px]"
-    >
-      <div className="space-y-5 mb-5">
-        <Input
-          {...register('name', {
-            required: 'Nombre es requerido'
-          })}
-          error={errors?.name?.message?.toString()}
-          label="Nombre"
-          labelClassNames="bg-white"
-        />
-        <Input
-          {...register('email', {
-            required: 'El correo electrónico es requerido',
-            pattern: {
-              value:
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message: 'No es un correo electrónico de verdad'
-            }
-          })}
-          error={errors?.email?.message?.toString()}
-          label="Correo Electrónico"
-          labelClassNames="bg-white"
-        />
-        <Input
-          {...register('password', {
-            required: 'Contraseña es reqerido'
-          })}
-          label="Contraseña"
-          type="password"
-          labelClassNames="bg-white"
-          error={errors?.password?.message?.toString()}
-        />
-        <Input
-          {...register('confirm_password', {
-            required: 'Confirmar contraseña es reqerido',
-            validate: (val: string) => {
-              if (watch('password') != val) {
-                console.log('do not match')
-                return 'Sus contraseñas no coinciden'
+    <div className="bg-white p-10 shadow rounded-md min-w-[375px] md:min-w-[600px]">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="space-y-5 mb-5">
+          <Input
+            {...register('name', {
+              required: 'Nombre es requerido'
+            })}
+            error={errors?.name?.message?.toString()}
+            label="Nombre"
+            labelClassNames="bg-white"
+          />
+          <Input
+            {...register('email', {
+              required: 'El correo electrónico es requerido',
+              pattern: {
+                value:
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                message: 'No es un correo electrónico de verdad'
               }
-            }
-          })}
-          error={errors?.confirm_password?.message?.toString()}
-          label="Confirmar Contraseña"
-          type="password"
-          labelClassNames="bg-white"
-        />
-      </div>
-      <ButtonLoading
-        disabled={registerInProcess}
-        isLoading={registerInProcess}
-        type="submit"
-        className="w-full text-white bg-blue fill-blue"
-        size="sm"
-      >
-        <div className="text-white">
-          <p className="text-current">Crear Cuenta</p>
+            })}
+            error={errors?.email?.message?.toString()}
+            label="Correo Electrónico"
+            labelClassNames="bg-white"
+          />
+          <Input
+            {...register('password', {
+              required: 'Contraseña es reqerido'
+            })}
+            label="Contraseña"
+            type="password"
+            labelClassNames="bg-white"
+            error={errors?.password?.message?.toString()}
+          />
+          <Input
+            {...register('confirm_password', {
+              required: 'Confirmar contraseña es reqerido',
+              validate: (val: string) => {
+                if (watch('password') != val) {
+                  console.log('do not match')
+                  return 'Sus contraseñas no coinciden'
+                }
+              }
+            })}
+            error={errors?.confirm_password?.message?.toString()}
+            label="Confirmar Contraseña"
+            type="password"
+            labelClassNames="bg-white"
+          />
         </div>
-      </ButtonLoading>
-      <Link href="/registrar">
-        <Button
+        <ButtonLoading
           disabled={registerInProcess}
-          variant="secondary"
-          className="w-full mt-5 border-blue text-blue hover:bg-blue hover:bg-opacity-10"
+          isLoading={registerInProcess}
+          type="submit"
+          className="w-full text-white bg-blue fill-blue"
           size="sm"
         >
-          <div className="text-current">
-            <p className="text-current">Login</p>
+          <div className="text-white">
+            <p className="text-current">Crear Cuenta</p>
           </div>
-        </Button>
-      </Link>
+        </ButtonLoading>
+        <Link href="/registrar">
+          <Button
+            disabled={registerInProcess}
+            variant="secondary"
+            className="w-full mt-5 border-blue text-blue hover:bg-blue hover:bg-opacity-10"
+            size="sm"
+          >
+            <div className="text-current">
+              <p className="text-current">Login</p>
+            </div>
+          </Button>
+        </Link>
+      </form>
       <div className="flex items-center space-x-2 py-5">
         <div className="h-[1px] w-full bg-neutral-300" />
         <p className="text-sm whitespace-nowrap text-neutral-contrast-light">
@@ -141,7 +140,7 @@ const RegisterForm = () => {
         <div className="h-[1px] w-full bg-neutral-300" />
       </div>
       <GoogleButton disabled={registerInProcess} />
-    </form>
+    </div>
   )
 }
 

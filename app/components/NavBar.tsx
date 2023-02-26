@@ -10,11 +10,12 @@ import { usePathname } from 'next/navigation'
 import useOutsideClick from '../../hooks/useOutsideClick'
 import Cart from './icons/Cart'
 import UserSettings from './userSettings'
-import { AdminUser } from '../../schemas'
+import { PluginUsersPermissionsUser } from '../../schemas'
+import { UserContextProvider } from '../../context/UserContext'
 
 type NavBarProps = {
   alternative?: boolean
-  user?: AdminUser
+  user?: PluginUsersPermissionsUser['attributes'] | undefined
 }
 
 const NavBar = ({ user, alternative }: NavBarProps) => {
@@ -25,7 +26,6 @@ const NavBar = ({ user, alternative }: NavBarProps) => {
   const pathname = usePathname()
   const drawerRef = useRef(null)
   const hamburgerRef = useRef(null)
-
   useEffect(() => {
     if (menu || drawer) {
       return document.body.classList.add('modal-open')
@@ -38,7 +38,7 @@ const NavBar = ({ user, alternative }: NavBarProps) => {
   useOutsideClick(hamburgerRef, () => setMenu(false))
 
   const baseClasses = classNames(
-    'w-full z-30 absolute py-5',
+    'w-full z-30 absolute p-5',
     alternative ? 'bg-white shadow-md' : 'bg-transparent'
   )
 
@@ -54,6 +54,13 @@ const NavBar = ({ user, alternative }: NavBarProps) => {
       : 'text-white border-white'
   )
 
+  const userSettingsClasses = classNames(
+    'hidden lg:flex',
+    alternative
+      ? 'border-neutral-contrast text-neutral-contrast'
+      : 'text-white border-white'
+  )
+
   const cartButtonClasses = classNames(
     'w-6 h-6 absolute right-16 lg:relative lg:right-auto transition-all ease-in-out duration-150 cursor-pointer hover:text-lobxs',
     alternative ? 'text-neutral-contrast' : 'text-neutral'
@@ -65,7 +72,7 @@ const NavBar = ({ user, alternative }: NavBarProps) => {
   )
 
   return (
-    <>
+    <UserContextProvider>
       <nav className={baseClasses}>
         <div className="max-w-screen-lg 2xl:max-w-screen-2xl mx-auto px-10 lg:px-0 w-full">
           <div className="flex justify-between w-full items-center">
@@ -138,7 +145,7 @@ const NavBar = ({ user, alternative }: NavBarProps) => {
                 onClick={() => setDrawer(!drawer)}
                 className={cartButtonClasses}
               />
-              <UserSettings user={user} className={storeButtonClasses} />
+              <UserSettings user={user} className={userSettingsClasses} />
             </div>
           </div>
         </div>
@@ -222,7 +229,7 @@ const NavBar = ({ user, alternative }: NavBarProps) => {
       </button>
       <Drawer ref={drawerRef} onClick={toggleDrawer} show={drawer}></Drawer>
       {menu && <Overlay onClick={toggleMenu} />}
-    </>
+    </UserContextProvider>
   )
 }
 

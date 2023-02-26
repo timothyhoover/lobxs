@@ -19,7 +19,8 @@ import {
   SetMinMax,
   SetPluginOptions,
   TextAttribute,
-  MediaAttribute
+  MediaAttribute,
+  CustomField
 } from '@strapi/strapi'
 
 export interface AdminPermission extends CollectionTypeSchema {
@@ -390,49 +391,6 @@ export interface PluginUploadFolder extends CollectionTypeSchema {
   }
 }
 
-export interface PluginI18NLocale extends CollectionTypeSchema {
-  info: {
-    singularName: 'locale'
-    pluralName: 'locales'
-    collectionName: 'locales'
-    displayName: 'Locale'
-    description: ''
-  }
-  options: {
-    draftAndPublish: false
-  }
-  pluginOptions: {
-    'content-manager': {
-      visible: false
-    }
-    'content-type-builder': {
-      visible: false
-    }
-  }
-  attributes: {
-    name: StringAttribute &
-      SetMinMax<{
-        min: 1
-        max: 50
-      }>
-    code: StringAttribute & UniqueAttribute
-    createdAt: DateTimeAttribute
-    updatedAt: DateTimeAttribute
-    createdBy: RelationAttribute<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      PrivateAttribute
-    updatedBy: RelationAttribute<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      PrivateAttribute
-  }
-}
-
 export interface PluginUsersPermissionsPermission extends CollectionTypeSchema {
   info: {
     name: 'permission'
@@ -563,6 +521,8 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
       'manyToOne',
       'plugin::users-permissions.role'
     >
+    name: StringAttribute
+    image: StringAttribute
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     createdBy: RelationAttribute<
@@ -573,6 +533,89 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
       PrivateAttribute
     updatedBy: RelationAttribute<
       'plugin::users-permissions.user',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+  }
+}
+
+export interface PluginI18NLocale extends CollectionTypeSchema {
+  info: {
+    singularName: 'locale'
+    pluralName: 'locales'
+    collectionName: 'locales'
+    displayName: 'Locale'
+    description: ''
+  }
+  options: {
+    draftAndPublish: false
+  }
+  pluginOptions: {
+    'content-manager': {
+      visible: false
+    }
+    'content-type-builder': {
+      visible: false
+    }
+  }
+  attributes: {
+    name: StringAttribute &
+      SetMinMax<{
+        min: 1
+        max: 50
+      }>
+    code: StringAttribute & UniqueAttribute
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    createdBy: RelationAttribute<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    updatedBy: RelationAttribute<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+  }
+}
+
+export interface ApiCartItemCartItem extends CollectionTypeSchema {
+  info: {
+    singularName: 'cart-item'
+    pluralName: 'cart-items'
+    displayName: 'Cart Item'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    quantity: IntegerAttribute
+    product: RelationAttribute<
+      'api::cart-item.cart-item',
+      'oneToOne',
+      'api::product.product'
+    >
+    shopping_session: RelationAttribute<
+      'api::cart-item.cart-item',
+      'oneToOne',
+      'api::shopping-session.shopping-session'
+    >
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<
+      'api::cart-item.cart-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    updatedBy: RelationAttribute<
+      'api::cart-item.cart-item',
       'oneToOne',
       'admin::user'
     > &
@@ -700,8 +743,182 @@ export interface ApiDiscountDiscount extends CollectionTypeSchema {
   }
 }
 
+export interface ApiOrderDetailOrderDetail extends CollectionTypeSchema {
+  info: {
+    singularName: 'order-detail'
+    pluralName: 'order-details'
+    displayName: 'Order Detail'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    total: DecimalAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    users_permissions_user: RelationAttribute<
+      'api::order-detail.order-detail',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >
+    payment_detail: RelationAttribute<
+      'api::order-detail.order-detail',
+      'oneToOne',
+      'api::payment-detail.payment-detail'
+    >
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<
+      'api::order-detail.order-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    updatedBy: RelationAttribute<
+      'api::order-detail.order-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    localizations: RelationAttribute<
+      'api::order-detail.order-detail',
+      'oneToMany',
+      'api::order-detail.order-detail'
+    >
+    locale: StringAttribute
+  }
+}
+
+export interface ApiOrderItemOrderItem extends CollectionTypeSchema {
+  info: {
+    singularName: 'order-item'
+    pluralName: 'order-items'
+    displayName: 'Order Item'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    quanitity: IntegerAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    order_detail: RelationAttribute<
+      'api::order-item.order-item',
+      'oneToOne',
+      'api::order-detail.order-detail'
+    >
+    product: RelationAttribute<
+      'api::order-item.order-item',
+      'oneToOne',
+      'api::product.product'
+    >
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<
+      'api::order-item.order-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    updatedBy: RelationAttribute<
+      'api::order-item.order-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    localizations: RelationAttribute<
+      'api::order-item.order-item',
+      'oneToMany',
+      'api::order-item.order-item'
+    >
+    locale: StringAttribute
+  }
+}
+
+export interface ApiPaymentDetailPaymentDetail extends CollectionTypeSchema {
+  info: {
+    singularName: 'payment-detail'
+    pluralName: 'payment-details'
+    displayName: 'Payment Details'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    amount: DecimalAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    provider: StringAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    status: StringAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    order_detail: RelationAttribute<
+      'api::payment-detail.payment-detail',
+      'oneToOne',
+      'api::order-detail.order-detail'
+    >
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<
+      'api::payment-detail.payment-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    updatedBy: RelationAttribute<
+      'api::payment-detail.payment-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    localizations: RelationAttribute<
+      'api::payment-detail.payment-detail',
+      'oneToMany',
+      'api::payment-detail.payment-detail'
+    >
+    locale: StringAttribute
+  }
+}
+
 export interface ApiProductProduct extends CollectionTypeSchema {
-  id: number
   info: {
     singularName: 'product'
     pluralName: 'products'
@@ -768,6 +985,12 @@ export interface ApiProductProduct extends CollectionTypeSchema {
       'oneToOne',
       'api::subcategory.subcategory'
     >
+    inventory: IntegerAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     createdAt: DateTimeAttribute
     updatedAt: DateTimeAttribute
     publishedAt: DateTimeAttribute
@@ -787,6 +1010,89 @@ export interface ApiProductProduct extends CollectionTypeSchema {
       'api::product.product',
       'oneToMany',
       'api::product.product'
+    >
+    locale: StringAttribute
+  }
+}
+
+export interface ApiRibbonRibbon extends CollectionTypeSchema {
+  info: {
+    singularName: 'ribbon'
+    pluralName: 'ribbons'
+    displayName: 'Ribbon'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    name: StringAttribute
+    color: StringAttribute & CustomField<'plugin::color-picker.color'>
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<
+      'api::ribbon.ribbon',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    updatedBy: RelationAttribute<
+      'api::ribbon.ribbon',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+  }
+}
+
+export interface ApiShoppingSessionShoppingSession
+  extends CollectionTypeSchema {
+  info: {
+    singularName: 'shopping-session'
+    pluralName: 'shopping-sessions'
+    displayName: 'Shopping Session'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    total: DecimalAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    users_permissions_user: RelationAttribute<
+      'api::shopping-session.shopping-session',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<
+      'api::shopping-session.shopping-session',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    updatedBy: RelationAttribute<
+      'api::shopping-session.shopping-session',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    localizations: RelationAttribute<
+      'api::shopping-session.shopping-session',
+      'oneToMany',
+      'api::shopping-session.shopping-session'
     >
     locale: StringAttribute
   }
@@ -840,6 +1146,182 @@ export interface ApiSubcategorySubcategory extends CollectionTypeSchema {
       'api::subcategory.subcategory',
       'oneToMany',
       'api::subcategory.subcategory'
+    >
+    locale: StringAttribute
+  }
+}
+
+export interface ApiTrainingPlanTrainingPlan extends CollectionTypeSchema {
+  info: {
+    singularName: 'training-plan'
+    pluralName: 'training-plans'
+    displayName: 'Training Plan'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    name: StringAttribute & RequiredAttribute
+    training_plan_features: RelationAttribute<
+      'api::training-plan.training-plan',
+      'oneToMany',
+      'api::training-plan-feature.training-plan-feature'
+    >
+    price: DecimalAttribute & RequiredAttribute
+    sub_text: StringAttribute
+    ribbon: RelationAttribute<
+      'api::training-plan.training-plan',
+      'oneToOne',
+      'api::ribbon.ribbon'
+    >
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<
+      'api::training-plan.training-plan',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    updatedBy: RelationAttribute<
+      'api::training-plan.training-plan',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+  }
+}
+
+export interface ApiTrainingPlanFeatureTrainingPlanFeature
+  extends CollectionTypeSchema {
+  info: {
+    singularName: 'training-plan-feature'
+    pluralName: 'training-plan-features'
+    displayName: 'Training Plan Feature'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    feature: StringAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    icon: MediaAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<
+      'api::training-plan-feature.training-plan-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    updatedBy: RelationAttribute<
+      'api::training-plan-feature.training-plan-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    localizations: RelationAttribute<
+      'api::training-plan-feature.training-plan-feature',
+      'oneToMany',
+      'api::training-plan-feature.training-plan-feature'
+    >
+    locale: StringAttribute
+  }
+}
+
+export interface ApiUserAddressUserAddress extends CollectionTypeSchema {
+  info: {
+    singularName: 'user-address'
+    pluralName: 'user-addresses'
+    displayName: 'User Address'
+    description: ''
+  }
+  options: {
+    draftAndPublish: true
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    address_line1: StringAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    address_line2: StringAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    city: StringAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    postal_code: StringAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    country: StringAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    telephone: StringAttribute &
+      SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    users_permissions_user: RelationAttribute<
+      'api::user-address.user-address',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >
+    createdAt: DateTimeAttribute
+    updatedAt: DateTimeAttribute
+    publishedAt: DateTimeAttribute
+    createdBy: RelationAttribute<
+      'api::user-address.user-address',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    updatedBy: RelationAttribute<
+      'api::user-address.user-address',
+      'oneToOne',
+      'admin::user'
+    > &
+      PrivateAttribute
+    localizations: RelationAttribute<
+      'api::user-address.user-address',
+      'oneToMany',
+      'api::user-address.user-address'
     >
     locale: StringAttribute
   }
@@ -902,14 +1384,23 @@ declare global {
       'admin::api-token-permission': AdminApiTokenPermission
       'plugin::upload.file': PluginUploadFile
       'plugin::upload.folder': PluginUploadFolder
-      'plugin::i18n.locale': PluginI18NLocale
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission
       'plugin::users-permissions.role': PluginUsersPermissionsRole
       'plugin::users-permissions.user': PluginUsersPermissionsUser
+      'plugin::i18n.locale': PluginI18NLocale
+      'api::cart-item.cart-item': ApiCartItemCartItem
       'api::category.category': ApiCategoryCategory
       'api::discount.discount': ApiDiscountDiscount
+      'api::order-detail.order-detail': ApiOrderDetailOrderDetail
+      'api::order-item.order-item': ApiOrderItemOrderItem
+      'api::payment-detail.payment-detail': ApiPaymentDetailPaymentDetail
       'api::product.product': ApiProductProduct
+      'api::ribbon.ribbon': ApiRibbonRibbon
+      'api::shopping-session.shopping-session': ApiShoppingSessionShoppingSession
       'api::subcategory.subcategory': ApiSubcategorySubcategory
+      'api::training-plan.training-plan': ApiTrainingPlanTrainingPlan
+      'api::training-plan-feature.training-plan-feature': ApiTrainingPlanFeatureTrainingPlanFeature
+      'api::user-address.user-address': ApiUserAddressUserAddress
       'api::variation.variation': ApiVariationVariation
     }
   }

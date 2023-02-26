@@ -3,14 +3,15 @@ import { map } from 'remeda'
 import { ApiProductProduct } from '../../schemas'
 import { fetchProducts } from '../../utils/fetch'
 import Product from '../components/Product'
-import NavBar from '../components/NavBar'
+import NavBarServer from '../components/NavBarServer'
 
 const StorePage = async () => {
   const { data: products } = await fetchProducts()
 
   return (
     <>
-      <NavBar alternative={true} />
+      {/* @ts-expect-error Server Component */}
+      <NavBarServer alternative />
       <main className="pt-40 bg-neutral">
         <div className="flex flex-col items-center justify-center max-w-screen-2xl mx-auto px-10">
           <div>

@@ -26,7 +26,7 @@ const Product = ({
   return (
     <div className="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
       <Link
-        href={`/product/${toKebabCase(name)}/${id}`}
+        href={`/producto/${toKebabCase(name)}/${id}`}
         className="flex justify-center"
       >
         <Image

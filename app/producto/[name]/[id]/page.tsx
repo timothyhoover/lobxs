@@ -3,7 +3,7 @@ import { fetchProduct } from '../../../../utils/fetch'
 import { formatCurrency } from '../../../../utils/util'
 import AddToCart from '../../../components/AddToCart'
 import ProductDetailImages from '../../../components/ProductDetailImages'
-import NavBar from '../../../components/NavBar'
+import NavBarServer from '../../../components/NavBarServer'
 
 export const dynamic = 'force-dynamic'
 
@@ -29,7 +29,8 @@ const ProductDetailsPage = async ({
   } = await fetchProduct(id)
   return (
     <>
-      <NavBar alternative={true} />
+      {/* @ts-expect-error Server Component */}
+      <NavBarServer alternative />
       <main className="pt-40 bg-neutral">
         <div className="flex space-x-10 max-w-screen-2xl mx-auto px-10 py-10">
           <div className="w-1/2 h-[600px]">

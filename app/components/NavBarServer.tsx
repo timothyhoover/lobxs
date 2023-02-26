@@ -3,11 +3,12 @@ import NavBar from './NavBar'
 import { cookies } from 'next/headers'
 import { fetchUser } from '../../utils/fetch'
 
-const NavServer = async () => {
+const NavBarServer = async ({ ...props }) => {
   const nextJSCookies = cookies()
   const jwt = nextJSCookies.get('jwt')
-  const user = await fetchUser(jwt?.value)
-  return <NavBar user={user} />
+  const user = jwt ? await fetchUser(jwt?.value) : null
+
+  return user ? <NavBar {...props} user={user} /> : <NavBar {...props} />
 }
 
-export default NavServer
+export default NavBarServer

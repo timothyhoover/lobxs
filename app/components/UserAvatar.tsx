@@ -25,7 +25,7 @@ const UserAvatar = ({
       'flex-shrink-0',
       src
         ? 'rounded-full mx-2 object-contain'
-        : 'flex items-center justify-center overflow-hidden border border-white rounded-full h-7 w-7'
+        : 'flex items-center justify-center overflow-hidden rounded-full h-7 w-7'
     ),
     className
   )
@@ -40,13 +40,11 @@ const UserAvatar = ({
       height={height}
     />
   ) : placeholder ? (
-    <div className={baseClasses}>
-      <p className="text-xl font-medium text-lobxs-contrast font-serif">
-        {placeholder}
-      </p>
+    <div className={classNames('border border-white', baseClasses)}>
+      <p className="font-medium text-current font-serif">{placeholder}</p>
     </div>
   ) : (
-    <Profile className="text-lobxs-contrast h-7 w-7" />
+    <Profile className={baseClasses} />
   )
 }
 

@@ -1,17 +1,16 @@
 import React from 'react'
 import NavBarServer from '../components/NavBarServer'
-import ContactSection from './ContactSection'
-import HeroSection from './HeroSection'
 
-const ContactPage = () => {
+const PerfilPage = () => {
   return (
     <main className="bg-neutral">
       {/* @ts-expect-error Server Component */}
       <NavBarServer alternative />
-      <HeroSection />
-      <ContactSection />
+      {/* hi {user} */}
+      {/* side nav  */}
+      {/* account form */}
     </main>
   )
 }
 
-export default ContactPage
+export default PerfilPage

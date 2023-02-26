@@ -1,5 +1,7 @@
 // make test
 
+import { PluginUsersPermissionsUser } from '../schemas'
+
 const fetchProducts = async () => {
   try {
     const products = await fetch(
@@ -60,7 +62,7 @@ const fetchUser = async (jwt: string | undefined) => {
       }
     })
     return await response.json()
-  } catch (error) {
+  } catch (error: any) {
     return error
   }
 }

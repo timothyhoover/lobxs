@@ -2,10 +2,9 @@ import FeaturedProducts from './FeaturedProductsSection'
 import FeaturedVideoSection from './FeaturedVideoSection'
 import HeroSection from './HeroSection'
 import JoinUsSection from './JoinUsSection'
-import NavBar from './components/NavBar'
 import TestimonialSection from './TestimonialSection'
 import WelcomeSection from './WelcomeSection'
-import NavServer from './components/NavBarServer'
+import NavBarServer from './components/NavBarServer'
 
 const getProducts = async () => {
   let products
@@ -27,7 +26,8 @@ const HomePage = async () => {
   const { data: products } = await getProducts()
   return (
     <main>
-      <NavServer />
+      {/* @ts-expect-error Server Component */}
+      <NavBarServer />
       <HeroSection />
       <WelcomeSection />
       <FeaturedVideoSection />
