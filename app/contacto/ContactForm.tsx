@@ -60,7 +60,11 @@ const ContactForm = () => {
         label="Mensaje"
         error={errors?.message?.message?.toString()}
       />
-      <Button type="submit" className="min-w-[250px]" variant="tertiary">
+      <Button
+        type="submit"
+        className="min-w-[250px] bg-neutral"
+        variant="tertiary"
+      >
         Enviar Mensaje
       </Button>
     </form>
