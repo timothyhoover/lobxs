@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Button from './Button'
 import Drawer from './Drawer'
+import CartList from './CartList'
 import Overlay from './Overlay'
 import Link from 'next/link'
 import classNames from 'classnames'
@@ -12,6 +13,7 @@ import Cart from './icons/Cart'
 import UserSettings from './userSettings'
 import { PluginUsersPermissionsUser } from '../../schemas'
 import { UserContextProvider } from '../../context/UserContext'
+import { CartContextProvider } from '../../context/CartContext'
 
 type NavBarProps = {
   alternative?: boolean
@@ -24,8 +26,8 @@ const NavBar = ({ user, alternative }: NavBarProps) => {
   const toggleMenu = () => setMenu(!menu)
   const toggleDrawer = () => setDrawer(!drawer)
   const pathname = usePathname()
-  const drawerRef = useRef(null)
   const hamburgerRef = useRef(null)
+
   useEffect(() => {
     if (menu || drawer) {
       return document.body.classList.add('modal-open')
@@ -34,7 +36,6 @@ const NavBar = ({ user, alternative }: NavBarProps) => {
     }
   }, [menu, drawer])
 
-  useOutsideClick(drawerRef, () => setDrawer(false))
   useOutsideClick(hamburgerRef, () => setMenu(false))
 
   const baseClasses = classNames(
@@ -227,7 +228,11 @@ const NavBar = ({ user, alternative }: NavBarProps) => {
           } absolute w-4 h-[3px] transition-all ease-in-out origin-left rounded-full right-2 bottom-3`}
         />
       </button>
-      <Drawer ref={drawerRef} onClick={toggleDrawer} show={drawer}></Drawer>
+      <Drawer onClick={toggleDrawer} show={drawer}>
+        <CartContextProvider>
+          <CartList />
+        </CartContextProvider>
+      </Drawer>
       {menu && <Overlay onClick={toggleMenu} />}
     </UserContextProvider>
   )

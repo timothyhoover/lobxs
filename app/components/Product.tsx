@@ -7,10 +7,6 @@ import { first } from 'remeda'
 import { ApiProductProduct } from '../../schemas'
 import { formatCurrency, getStrapiMedia, toKebabCase } from '../../utils/util'
 
-import Button from './Button'
-import Cart from './icons/Cart'
-import Spinner from './loading/Spinner'
-
 type ProductType = {
   id: number
   attributes: ApiProductProduct['attributes']
@@ -24,7 +20,7 @@ const Product = ({
     attributes: { url, alternativeText }
   }: ApiProductProduct['attributes']['images'] = first(images.data)
   return (
-    <div className="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
+    <div className="w-full max-w-sm bg-white rounded-lg shadow-md flex flex-col justify-between">
       <Link
         href={`/producto/${toKebabCase(name)}/${id}`}
         className="flex justify-center"
@@ -45,13 +41,9 @@ const Product = ({
           {description}
         </p>
         <div className="flex items-center justify-between">
-          <span className="text-3xl font-bold text-gray-900 w-full">
+          <span className="text-xl font-bold text-gray-900 w-full">
             {formatCurrency({ amount: price })}
           </span>
-          <Button>
-            <Cart className="text-white text-sm w-7" />
-            {/* <Spinner className="text-white fill-blue text-sm w-7" /> */}
-          </Button>
         </div>
       </div>
     </div>

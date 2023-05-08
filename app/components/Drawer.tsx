@@ -19,20 +19,17 @@ const Drawer = (
       {show && <Overlay />}
       <div
         ref={ref}
-        className={`top-0 right-0 w-[35vw] bg-white p-10 pl-20 text-black fixed h-full z-50 ease-in-out duration-300 ${
+        className={`top-0 right-0 w-[65vw] md:w-[50vw] lg:w-[35vw] bg-white px-5 pt-20 pb-app text-black fixed h-full z-50 ease-in-out duration-300 ${
           show ? 'translate-x-0 ' : 'translate-x-full'
         }`}
       >
         <button
-          className="flex items-center cursor-pointer fixed right-5 top-3 lg:right-10 lg:top-6"
+          className="flex items-center cursor-pointer fixed right-5 top-3 lg:right-4 lg:top-6"
           onClick={onClick}
         >
           <Cancel className="text-4xl w-10 h-10 text-black" />
         </button>
         {children}
-        <h3 className="mt-20 text-4xl font-semibold text-black">
-          I am a sidebar
-        </h3>
       </div>
     </>
   )

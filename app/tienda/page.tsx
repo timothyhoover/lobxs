@@ -7,7 +7,6 @@ import NavBarServer from '../components/NavBarServer'
 
 const StorePage = async () => {
   const { data: products } = await fetchProducts()
-
   return (
     <>
       {/* @ts-expect-error Server Component */}

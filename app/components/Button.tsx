@@ -29,7 +29,7 @@ const Button = ({
         variant === 'secondary'
     },
     {
-      'px-5 rounded-md text-neutral-contrast disabled:hover:bg-white font-medium border-2 border-neutral-contrast bg-neutral hover:bg-neutral-200 focus-visible:bg-neutral-200 active:bg-neutral-300':
+      'px-5 rounded-md text-neutral-contrast disabled:hover:bg-white font-medium border-2 border-neutral-contrast bg-white hover:bg-neutral-200 focus-visible:bg-neutral-200 active:bg-neutral-300':
         variant === 'tertiary'
     },
     {

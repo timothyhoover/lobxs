@@ -14,13 +14,11 @@ const formatCurrency = ({
   currency = 'EUR',
   ...rest
 }) =>
-  amount
-    ? new Intl.NumberFormat(locale, {
-        style: 'currency',
-        currency,
-        ...rest
-      }).format(amount)
-    : ''
+  new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency,
+    ...rest
+  }).format(amount)
 
 const toKebabCase = (str: string) =>
   str

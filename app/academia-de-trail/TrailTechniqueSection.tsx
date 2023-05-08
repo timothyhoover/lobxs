@@ -36,7 +36,7 @@ const TrailTechniqueSection = () => {
               en montaña vas a encontrar 100 vídeos cortos como este con
               contenido teórico y práctico. Estos son los bloques teóricos:
             </p>
-            <ul className="text-lg lg:text-xl space-y-2 text-shadow">
+            <ul className="text-white text-lg lg:text-xl space-y-2 text-shadow">
               <li>Bloque I: SALUD</li>
               <li>
                 Bloque II: RENDIMIENTO: 1) Teoría del entrenamiento; 2) Fuerza,

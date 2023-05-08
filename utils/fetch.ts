@@ -1,6 +1,4 @@
-// make test
-
-import { PluginUsersPermissionsUser } from '../schemas'
+import { cookies } from 'next/headers'
 
 const fetchProducts = async () => {
   try {
@@ -53,17 +51,23 @@ const fetchTrainingPlans = async () => {
   }
 }
 
-const fetchUser = async (jwt: string | undefined) => {
-  try {
-    const response = await fetch('http://0.0.0.0:1337/api/users/me', {
-      method: 'GET',
-      headers: {
-        Authorization: `bearer ${jwt}`
-      }
-    })
-    return await response.json()
-  } catch (error: any) {
-    return error
+const fetchUser = async () => {
+  const nextJSCookies = cookies()
+  const jwt = nextJSCookies.get('jwt')
+  if (jwt) {
+    try {
+      const response = await fetch('http://0.0.0.0:1337/api/users/me', {
+        method: 'GET',
+        headers: {
+          Authorization: `bearer ${jwt.value}`
+        }
+      })
+      return await response.json()
+    } catch (error: any) {
+      return error
+    }
+  } else {
+    return null
   }
 }
 

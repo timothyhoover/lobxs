@@ -13,19 +13,7 @@ const ProductDetailsPage = async ({
   params: { id: number }
 }) => {
   const {
-    data: {
-      attributes: {
-        name,
-        description,
-        price,
-        inventory,
-        images,
-        category,
-        subcategory,
-        discount,
-        variations
-      }
-    }
+    data: { attributes }
   } = await fetchProduct(id)
   return (
     <>
@@ -34,16 +22,18 @@ const ProductDetailsPage = async ({
       <main className="pt-40 bg-neutral">
         <div className="flex space-x-10 max-w-screen-2xl mx-auto px-10 py-10">
           <div className="w-1/2 h-[600px]">
-            <ProductDetailImages images={images} />
+            <ProductDetailImages images={attributes.images} />
           </div>
           <div className="flex flex-col">
             <div className="border-b border-b-neutral-300 pb-3">
-              <h1 className="text-4xl mb-3">{name}</h1>
-              <p className="text-3xl">{formatCurrency({ amount: price })}</p>
+              <h1 className="text-4xl mb-3">{attributes.name}</h1>
+              <p className="text-3xl">
+                {formatCurrency({ amount: attributes.price })}
+              </p>
             </div>
             <div className="mt-3 space-y-5">
-              <p>{description}</p>
-              <AddToCart variations={variations.data} />
+              <p>{attributes.description}</p>
+              <AddToCart attributes={attributes} id={id} />
             </div>
           </div>
         </div>
